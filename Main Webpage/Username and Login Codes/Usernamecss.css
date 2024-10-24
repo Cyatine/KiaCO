@@ -1,0 +1,213 @@
+/* General reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Bebas Neue', sans-serif;
+    background: linear-gradient(135deg, #1a1a1a 50%, #262626 50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    color: white;
+    margin: 0;
+    position: relative;
+    overflow-y: auto; /* Allows scrolling for longer content */
+}
+
+/* Hero Section */
+.hero {
+    text-align: center;
+    margin-bottom: 40px;
+    padding: 0px 0px;
+    padding-left: 100px;
+    padding-bottom: 100px;
+    
+}
+
+.hero h2 {
+    font-size: 6em;
+    color: #ffcc00;
+    text-shadow: 0px 0px 15px rgba(255, 204, 0, 0.7);
+}
+
+.hero p {
+    font-size: 1.2em;
+    color: #dcdcdc;
+    margin: 20px 0;
+}
+
+
+/* Container Styles */
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+    width: 90%;
+    max-width: 1200px;
+    margin-left: 150px; /* Ensure space for the logo */
+}
+
+/* Login Section */
+.login-container {
+    background: rgba(0, 0, 0, 0.8);
+    border-radius: 15px;
+    padding: 40px;
+    width: 100%;
+    max-width: 400px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.login-container:hover {
+    transform: scale(1.05);
+}
+
+.login-box h2 {
+    color: #ffffff;
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    text-shadow: 0px 0px 10px rgba(255, 204, 0, 0.5);
+    font-family: 'Bebas Neue', sans-serif;
+}
+
+.login-box p {
+    color: #dcdcdc;
+    margin-bottom: 30px;
+}
+
+.input-group {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+input {
+    width: calc(100% - 50px);
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    background-color: #444444;
+    color: white;
+    font-size: 1em;
+    padding-left: 10px;
+    transition: all 0.3s ease;
+}
+
+input::placeholder {
+    color: #bfbfbf;
+}
+
+input:focus {
+    outline: none;
+    box-shadow: 0 0 8px #ffffff;
+    background-color: #555555;
+}
+
+
+
+.btn {
+    background: linear-gradient(45deg, #ffcc00, #ffdd33);
+    border: none;
+    padding: 15px;
+    width: 100%;
+    border-radius: 5px;
+    font-size: 1.2em;
+    color: #333;
+    cursor: pointer;
+    font-family: 'Bebas Neue', sans-serif;
+    transition: all 0.3s ease;
+}
+
+.btn:hover {
+    background: linear-gradient(45deg, #e6b800, #f2ca42);
+    transform: scale(1.05);
+}
+
+#toggle-text {
+    color: #dcdcdc;
+    margin-top: 20px;
+}
+
+#toggle-form {
+    color: #ff0000;
+    text-decoration: none;
+}
+
+#toggle-form:hover {
+    text-decoration: underline;
+}
+
+
+/* Keyboard Gallery */
+.gallery-container {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.gallery-container h3 {
+    font-size: 2em;
+    color: #ffffff;
+    margin-bottom: 20px;
+    text-shadow: 0px 0px 10px rgba(255, 204, 0, 0.5);
+    font-family: 'Bebas Neue', sans-serif;
+}
+
+.gallery {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.gallery img {
+    width: 200px;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+    transition: transform 0.3s ease;
+    position: relative;
+}
+
+.gallery img:hover {
+    transform: scale(1.1);
+}
+
+/* Image Overlay Text */
+.gallery img::after {
+    content: attr(alt);
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    font-size: 1em;
+    color: #ffcc00;
+    background: rgba(0, 0, 0, 0.7);
+    padding: 5px;
+    border-radius: 5px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.gallery img:hover::after {
+    opacity: 1;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 600px) {
+    .login-container {
+        width: 90%;
+        padding: 20px;
+    }
+
+    .input-group input {
+        width: calc(100% - 40px);
+    }
+
+    .gallery img {
+        width: 150px;
+    }
+}

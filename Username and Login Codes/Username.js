@@ -53,31 +53,39 @@ document.addEventListener('DOMContentLoaded', () => {
     updateForm();
 
     // Handle form submission (Login/Sign-up)
-    loginForm.addEventListener('submit', (e) => {
+    loginForm.addEventListener('submit', async (e) => {
         e.preventDefault();
         const username = usernameInput.value;
         const password = passwordInput.value;
 
-        if (isSignUpMode) {
-            // Handle sign-up logic
-            if (localStorage.getItem(username)) {
-                alert('Username already exists. Please choose a different username.');
+        // Determine the endpoint based on the mode (Sign Up or Login)
+        const endpoint = isSignUpMode ? '/signup' : '/login';
+
+        try {
+            // Send the POST request to the appropriate endpoint
+            const response = await fetch(`http://localhost:3000${endpoint}`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ username, password })
+            });
+
+            const result = await response.json();
+
+            if (response.ok) {
+                alert(result.message); // Optionally display a message
+                if (isSignUpMode) {
+                    // Switch to login mode after successful sign-up
+                    isSignUpMode = false;
+                    updateForm();
+                }
+                // Redirect to another webpage after successful login
+                window.location.href = 'Kia.Co.E-Commerce.html'; // Change this to the desired URL
             } else {
-                localStorage.setItem(username, password);
-                alert('Account created successfully! You can now log in.');
-                // Switch back to login mode
-                isSignUpMode = false;
-                updateForm(); // Update form to login mode
+                alert(result.message);
             }
-        } else {
-            // Handle login logic
-            const storedPassword = localStorage.getItem(username);
-            if (storedPassword === password) {
-                alert('Login successful!');
-                // Redirect to another page or perform another action after login
-            } else {
-                alert('Invalid username or password.');
-            }                                                                                                           
+        } catch (error) {
+            console.error('Error:', error);
+            alert('Server error. Please try again later.');
         }
     });
 });

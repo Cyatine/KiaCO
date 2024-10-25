@@ -10,6 +10,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let isSignUpMode = false;
 
+    // Function to validate the username
+    const isUsernameValid = (username) => {
+        // Check for at least one uppercase letter
+        return /[A-Z]/.test(username);
+    };
+
     // Function to update the form based on the mode
     const updateForm = () => {
         // Clear the input fields for privacy
@@ -21,7 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
             formDescription.textContent = 'Create a new account';
             submitBtn.textContent = 'Sign Up';
             toggleText.innerHTML = "Already have an account? <a href='#' id='login-link'>Login</a>";
-            
+
             // Add event listener to the login link if it exists
             const loginLink = document.getElementById('login-link');
             if (loginLink) {
@@ -36,7 +42,7 @@ document.addEventListener('DOMContentLoaded', () => {
             formDescription.textContent = 'Enter your username and password';
             submitBtn.textContent = 'Login';
             toggleText.innerHTML = "Don't have an account? <a href='#' id='sign-up-link'>Sign up</a>";
-            
+
             // Add event listener to the sign-up link if it exists
             const signUpLink = document.getElementById('sign-up-link');
             if (signUpLink) {
@@ -57,6 +63,33 @@ document.addEventListener('DOMContentLoaded', () => {
         e.preventDefault();
         const username = usernameInput.value;
         const password = passwordInput.value;
+
+        // Validate the username if in sign-up mode
+        if (isSignUpMode) {
+            if (!isUsernameValid(username)) {
+                alert('Username must contain at least one uppercase letter.');
+                return; // Exit the function if validation fails
+            }
+
+            // Check if the username is already taken
+            const checkResponse = await fetch(`http://localhost:3000/check-username`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ username })
+            });
+
+            const checkResult = await checkResponse.json();
+
+            if (!checkResponse.ok) {
+                alert(checkResult.message);
+                return; // Exit if username check fails
+            }
+
+            if (!checkResult.available) {
+                alert('Username has already been taken. Please choose another one.');
+                return; // Exit if username is already taken
+            }
+        }
 
         // Determine the endpoint based on the mode (Sign Up or Login)
         const endpoint = isSignUpMode ? '/signup' : '/login';

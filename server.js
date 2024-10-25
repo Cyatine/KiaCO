@@ -63,22 +63,51 @@ app.post('/login', (req, res) => {
 app.post('/signup', (req, res) => {
     const { username, password } = req.body;
 
-    // Hash the password before storing it
-    bcrypt.hash(password, 10, (err, hashedPassword) => {
-        if (err) {
-            console.error('Error hashing password:', err);
+    // Check if username is already taken
+    connection.query('SELECT * FROM users WHERE username = ?', [username], (error, results) => {
+        if (error) {
+            console.error('Error executing query:', error);
             return res.status(500).json({ message: 'Server error. Please try again later.' });
         }
 
-        // Insert the new user into the database
-        connection.query('INSERT INTO users (username, password) VALUES (?, ?)', [username, hashedPassword], (error, results) => {
-            if (error) {
-                console.error('Error executing query:', error);
+        if (results.length > 0) {
+            return res.status(409).json({ message: 'Username has already been taken. Please choose another one.' });
+        }
+
+        // Hash the password before storing it
+        bcrypt.hash(password, 10, (err, hashedPassword) => {
+            if (err) {
+                console.error('Error hashing password:', err);
                 return res.status(500).json({ message: 'Server error. Please try again later.' });
             }
 
-            return res.status(201).json({ message: 'User registered successfully!' });
+            // Insert the new user into the database
+            connection.query('INSERT INTO users (username, password) VALUES (?, ?)', [username, hashedPassword], (error, results) => {
+                if (error) {
+                    console.error('Error executing query:', error);
+                    return res.status(500).json({ message: 'Server error. Please try again later.' });
+                }
+
+                return res.status(201).json({ message: 'User registered successfully!' });
+            });
         });
+    });
+});
+
+// Username availability check route
+app.post('/check-username', (req, res) => {
+    const { username } = req.body;
+
+    connection.query('SELECT * FROM users WHERE username = ?', [username], (error, results) => {
+        if (error) {
+            console.error('Error executing query:', error);
+            return res.status(500).json({ message: 'Server error. Please try again later.' });
+        }
+
+        // Check if the username is available
+        const isAvailable = results.length === 0; // If no results, the username is available
+
+        return res.status(200).json({ available: isAvailable });
     });
 });
 

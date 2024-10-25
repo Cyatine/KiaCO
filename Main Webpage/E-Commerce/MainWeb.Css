@@ -1,13 +1,13 @@
-@import url("https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap");
 
 :root {
-  --primary-color: #254d4d;
-  --text-dark: #171717;
-  --text-light: #737373;
+  --primary-color: #242c94;
+  --text: #ffffff;
+  --text-light: #494949;
   --extra-light: #f4f6f5;
   --white: #ffffff;
   --max-width: 1200px;
-  --header-font: "Merriweather", serif;
+  --header-font: "  ", serif;
 }
 
 * {
@@ -61,7 +61,9 @@ body {
 }
 
 body {
-  font-family: "Poppins", sans-serif;
+  font-family: "Bebas Neue", sans-serif;
+  background: linear-gradient(135deg, #1a1a1a 50%, #262626 50%);
+
 }
 
 nav {
@@ -103,7 +105,7 @@ nav {
   justify-content: center;
   flex-direction: column;
   gap: 2rem;
-  background-color: var(--primary-color);
+  background-color: var(#242c94);
   transition: 0.5s;
   z-index: -1;
   transform: translateY(-100%);
@@ -153,7 +155,7 @@ nav {
   margin-bottom: 1rem;
   font-size: 4rem;
   font-weight: 600;
-  font-family: var(--header-font);
+  font-family: "Bebas Neue";
   color: var(--primary-color);
 }
 
@@ -253,16 +255,18 @@ nav {
   padding: 2rem;
 }
 
+/* Product card hover effect with rounded white background */
 .product__card::before {
-  position: absolute;
   content: "";
+  position: absolute;
   top: 0;
   left: 0;
   width: 100%;
-  height: 65%;
-  background-color: var(--extra-light);
-  z-index: -1;
-  transition: 0.3s;
+  height: 100%;
+  background-color: white; /* Change the background color to white */
+  border-radius: 20px; /* Increase this value for more rounded corners */
+  transition: transform 0.4s ease; /* Smooth transition for hover effect */
+  z-index: -1; /* Keep it behind the product card content */
 }
 
 .product__card:hover::before {
@@ -288,7 +292,7 @@ nav {
 
 .client__content {
   padding: 4rem 1rem;
-  background-color: var(--extra-light);
+  background-color: var(--white); /* Changed to white */
   border-radius: 1rem;
 }
 
@@ -296,10 +300,14 @@ nav {
   max-width: 550px;
   margin-inline: auto;
   text-align: center;
+  color: var(--text-light); /* Ensure text color contrasts with white */
 }
+
+
 
 .client__content .section__header {
   font-size: 3.25rem;
+  color: var(--primary-color); /* Primary color for section header */
 }
 
 .swiper {
@@ -323,14 +331,14 @@ nav {
 .client__card p {
   margin-bottom: 2rem;
   font-size: 1.2rem;
-  color: var(--text-light);
+  color: var(--text-light); /* Adjust for readability */
   font-style: italic;
 }
 
 .client__card h4 {
   font-size: 1.5rem;
   font-weight: 500;
-  color: var(--text-dark);
+  color: var(--primary-color); /* Consistent color with the rest */
 }
 
 .client__card h5 {
@@ -503,6 +511,7 @@ nav {
 
   .deals__container {
     grid-template-columns: repeat(3, 1fr);
+    background-color: #ffffff;
   }
 
   .deals__card:nth-child(1) {
@@ -537,6 +546,7 @@ nav {
   .footer__container {
     grid-template-columns: repeat(4, 1fr);
   }
+  
 }
 
 @media (width > 1024px) {

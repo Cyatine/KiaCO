@@ -1,4 +1,3 @@
-/* General reset */
 * {
     margin: 0;
     padding: 0;
@@ -13,8 +12,6 @@ body {
     align-items: center;
     height: 100vh;
     color: white;
-    margin: 0;
-    position: relative;
     overflow-y: auto; /* Allows scrolling for longer content */
 }
 
@@ -22,24 +19,21 @@ body {
 .hero {
     text-align: center;
     margin-bottom: 40px;
-    padding: 0px 0px;
-    padding-left: 100px;
-    padding-bottom: 100px;
-    
+    margin-left: 161px;
 }
 
 .hero h2 {
     font-size: 6em;
     color: #ffcc00;
-    text-shadow: 0px 0px 15px rgba(255, 204, 0, 0.7);
+    text-shadow: 0 0 20px #242c94;
 }
 
 .hero p {
     font-size: 1.2em;
     color: #dcdcdc;
     margin: 20px 0;
+    line-height: 1.5; /* Improved line height for readability */
 }
-
 
 /* Container Styles */
 .container {
@@ -49,31 +43,34 @@ body {
     gap: 40px;
     width: 90%;
     max-width: 1200px;
-    margin-left: 150px; /* Ensure space for the logo */
+    padding: 0 20px; /* Added padding for smaller screens */
+    padding-left: 100px;
+
 }
 
 /* Login Section */
 .login-container {
-    background: rgba(0, 0, 0, 0.8);
+    background: rgba(0, 0, 0, 0.9); /* Darker background for better contrast */
+    font-family: 'Bebas Neue';
     border-radius: 15px;
-    padding: 40px;
+    padding: 60px; /* Increased padding for larger form */
     width: 100%;
-    max-width: 400px;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    max-width: 450px; /* Increased max-width for larger form */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
     text-align: center;
-    transition: transform 0.3s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Added transition for box shadow */
 }
 
 .login-container:hover {
-    transform: scale(1.05);
+    transform: translateY(-5px); /* Slight upward movement on hover */
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.6); /* Enhanced shadow on hover */
 }
 
 .login-box h2 {
     color: #ffffff;
     font-size: 2.5em;
     margin-bottom: 20px;
-    text-shadow: 0px 0px 10px rgba(255, 204, 0, 0.5);
-    font-family: 'Bebas Neue', sans-serif;
+    text-shadow: 0 0 10px rgba(255, 204, 0, 0.5);
 }
 
 .login-box p {
@@ -81,21 +78,23 @@ body {
     margin-bottom: 30px;
 }
 
+/* Input Styles */
 .input-group {
     position: relative;
-    margin-bottom: 20px;
+    margin-bottom: 30px; /* Increased margin for spacing */
 }
 
 input {
-    width: calc(100% - 50px);
-    padding: 12px;
+    width: calc(100% - 20px); /* Adjusted for better fit */
+    padding: 15px; /* Increased padding for comfort */
     border: none;
     border-radius: 5px;
     background-color: #444444;
     color: white;
-    font-size: 1em;
-    padding-left: 10px;
-    transition: all 0.3s ease;
+    font-size: 1.2em; /* Increased font size */
+    transition: background-color 0.3s ease, box-shadow 0.3s ease; /* Improved focus effects */
+    font-family: 'Agdasima';
+
 }
 
 input::placeholder {
@@ -104,23 +103,22 @@ input::placeholder {
 
 input:focus {
     outline: none;
-    box-shadow: 0 0 8px #ffffff;
+    box-shadow: 0 0 8px #ffcc00; /* Highlight border on focus */
     background-color: #555555;
 }
 
-
-
+/* Button Styles */
 .btn {
     background: linear-gradient(45deg, #ffcc00, #ffdd33);
     border: none;
     padding: 15px;
     width: 100%;
     border-radius: 5px;
-    font-size: 1.2em;
+    font-size: 1.5em; /* Increased button size */
+    font-family: 'Bebas Neue';
     color: #333;
     cursor: pointer;
-    font-family: 'Bebas Neue', sans-serif;
-    transition: all 0.3s ease;
+    transition: background 0.3s ease, transform 0.3s ease; /* Separate transitions */
 }
 
 .btn:hover {
@@ -134,7 +132,7 @@ input:focus {
 }
 
 #toggle-form {
-    color: #ff0000;
+    color: #007bff;
     text-decoration: none;
 }
 
@@ -142,58 +140,34 @@ input:focus {
     text-decoration: underline;
 }
 
-
-/* Keyboard Gallery */
-.gallery-container {
-    text-align: center;
-    margin-bottom: 60px;
-}
-
-.gallery-container h3 {
-    font-size: 2em;
-    color: #ffffff;
-    margin-bottom: 20px;
-    text-shadow: 0px 0px 10px rgba(255, 204, 0, 0.5);
-    font-family: 'Bebas Neue', sans-serif;
-}
-
-.gallery {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    flex-wrap: wrap;
-}
-
-.gallery img {
-    width: 200px;
-    height: auto;
-    border-radius: 10px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
-    transition: transform 0.3s ease;
-    position: relative;
-}
-
-.gallery img:hover {
-    transform: scale(1.1);
-}
-
-/* Image Overlay Text */
-.gallery img::after {
-    content: attr(alt);
+/* Keycap Styles */
+.keycap {
     position: absolute;
-    bottom: 10px;
-    left: 10px;
-    font-size: 1em;
-    color: #ffcc00;
-    background: rgba(0, 0, 0, 0.7);
-    padding: 5px;
-    border-radius: 5px;
-    opacity: 0;
-    transition: opacity 0.3s ease;
+    width: 20px; /* Size of keycap */
+    height: 20px;
+    background: #ffcc00;
+    border-radius: 3px;
+    transform: translate(-50%, -50%);
+    animation: bounce 1s infinite alternate; /* Animation for keycap */
 }
 
-.gallery img:hover::after {
-    opacity: 1;
+.keycap:nth-child(1) {
+    top: 50%; /* Position for username input */
+    left: 10px;
+}
+
+.keycap:nth-child(2) {
+    top: 50%; /* Position for password input */
+    left: 10px;
+}
+
+@keyframes bounce {
+    from {
+        transform: translate(-50%, -40%);
+    }
+    to {
+        transform: translate(-50%, -60%);
+    }
 }
 
 /* Mobile responsiveness */
@@ -204,10 +178,14 @@ input:focus {
     }
 
     .input-group input {
-        width: calc(100% - 40px);
+        width: 100%; /* Full width for input on mobile */
     }
 
-    .gallery img {
-        width: 150px;
+    .hero h2 {
+        font-size: 4em; /* Adjusted font size for smaller screens */
+    }
+
+    .hero p {
+        font-size: 1em; /* Adjusted paragraph size for readability */
     }
 }

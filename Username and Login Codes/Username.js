@@ -79,7 +79,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     updateForm();
                 }
                 // Redirect to another webpage after successful login
-                window.location.href = 'Kia.Co.E-Commerce.html'; // Change this to the desired URL
+                window.location.href = '../Main Webpage/E-Commerce/Kia.Co.E-Commerce.html'; // Change this to the desired URL
             } else {
                 alert(result.message);
             }

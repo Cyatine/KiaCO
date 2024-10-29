@@ -12,9 +12,9 @@ app.use(express.json()); // To parse JSON bodies
 // MySQL connection setup
 const connection = mysql.createConnection({
     host: 'localhost',
-    user: 'root', // Replace with your MySQL username
-    password: 'cyatine14', // Replace with your MySQL password
-    database: 'user_auth' // Ensure this database exists
+    user: 'root', 
+    password: 'cyatine14', 
+    database: 'user_auth' 
 });
 
 // Connect to MySQL

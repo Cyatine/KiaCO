@@ -10,15 +10,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let isSignUpMode = false;
 
-    // Function to validate the username
     const isUsernameValid = (username) => {
-        // Check for at least one uppercase letter
         return /[A-Z]/.test(username);
     };
 
-    // Function to update the form based on the mode
     const updateForm = () => {
-        // Clear the input fields for privacy
         usernameInput.value = '';
         passwordInput.value = '';
 
@@ -28,13 +24,12 @@ document.addEventListener('DOMContentLoaded', () => {
             submitBtn.textContent = 'Sign Up';
             toggleText.innerHTML = "Already have an account? <a href='#' id='login-link'>Login</a>";
 
-            // Add event listener to the login link if it exists
             const loginLink = document.getElementById('login-link');
             if (loginLink) {
                 loginLink.addEventListener('click', (e) => {
                     e.preventDefault();
-                    isSignUpMode = false; // Switch to login mode
-                    updateForm(); // Update the form
+                    isSignUpMode = false;
+                    updateForm();
                 });
             }
         } else {
@@ -43,35 +38,30 @@ document.addEventListener('DOMContentLoaded', () => {
             submitBtn.textContent = 'Login';
             toggleText.innerHTML = "Don't have an account? <a href='#' id='sign-up-link'>Sign up</a>";
 
-            // Add event listener to the sign-up link if it exists
             const signUpLink = document.getElementById('sign-up-link');
             if (signUpLink) {
                 signUpLink.addEventListener('click', (e) => {
                     e.preventDefault();
-                    isSignUpMode = true; // Switch to sign-up mode
-                    updateForm(); // Update the form
+                    isSignUpMode = true;
+                    updateForm();
                 });
             }
         }
     };
 
-    // Initialize the form in login mode
     updateForm();
 
-    // Handle form submission (Login/Sign-up)
     loginForm.addEventListener('submit', async (e) => {
         e.preventDefault();
         const username = usernameInput.value;
         const password = passwordInput.value;
 
-        // Validate the username if in sign-up mode
         if (isSignUpMode) {
             if (!isUsernameValid(username)) {
                 alert('Username must contain at least one uppercase letter.');
-                return; // Exit the function if validation fails
+                return;
             }
 
-            // Check if the username is already taken
             const checkResponse = await fetch(`http://localhost:3000/check-username`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
@@ -82,20 +72,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
             if (!checkResponse.ok) {
                 alert(checkResult.message);
-                return; // Exit if username check fails
+                return;
             }
 
             if (!checkResult.available) {
                 alert('Username has already been taken. Please choose another one.');
-                return; // Exit if username is already taken
+                return;
             }
         }
 
-        // Determine the endpoint based on the mode (Sign Up or Login)
         const endpoint = isSignUpMode ? '/signup' : '/login';
 
         try {
-            // Send the POST request to the appropriate endpoint
             const response = await fetch(`http://localhost:3000${endpoint}`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
@@ -105,14 +93,12 @@ document.addEventListener('DOMContentLoaded', () => {
             const result = await response.json();
 
             if (response.ok) {
-                alert(result.message); // Optionally display a message
+                alert(result.message);
                 if (isSignUpMode) {
-                    // Switch to login mode after successful sign-up
                     isSignUpMode = false;
                     updateForm();
                 }
-                // Redirect to another webpage after successful login
-                window.location.href = '../Main Webpage/E-Commerce/Kia.Co.E-Commerce.html'; // Change this to the desired URL
+                window.location.href = '../Main Webpage/E-Commerce/Kia.Co.E-Commerce.html';
             } else {
                 alert(result.message);
             }

@@ -12,10 +12,9 @@ body {
     align-items: center;
     height: 100vh;
     color: white;
-    overflow-y: auto; /* Allows scrolling for longer content */
+    overflow-y: auto;
 }
 
-/* Hero Section */
 .hero {
     text-align: center;
     margin-bottom: 40px;
@@ -32,10 +31,9 @@ body {
     font-size: 1.2em;
     color: #dcdcdc;
     margin: 20px 0;
-    line-height: 1.5; /* Improved line height for readability */
+    line-height: 1.5;
 }
 
-/* Container Styles */
 .container {
     display: flex;
     flex-direction: column;
@@ -43,27 +41,25 @@ body {
     gap: 40px;
     width: 90%;
     max-width: 1200px;
-    padding: 0 20px; /* Added padding for smaller screens */
+    padding: 0 20px;
     padding-left: 100px;
-
 }
 
-/* Login Section */
 .login-container {
-    background: rgba(0, 0, 0, 0.9); /* Darker background for better contrast */
+    background: rgba(0, 0, 0, 0.9);
     font-family: 'Bebas Neue';
     border-radius: 15px;
-    padding: 60px; /* Increased padding for larger form */
+    padding: 60px;
     width: 100%;
-    max-width: 450px; /* Increased max-width for larger form */
+    max-width: 450px;
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
     text-align: center;
-    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Added transition for box shadow */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .login-container:hover {
-    transform: translateY(-5px); /* Slight upward movement on hover */
-    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.6); /* Enhanced shadow on hover */
+    transform: translateY(-5px);
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.6);
 }
 
 .login-box h2 {
@@ -78,23 +74,21 @@ body {
     margin-bottom: 30px;
 }
 
-/* Input Styles */
 .input-group {
     position: relative;
-    margin-bottom: 30px; /* Increased margin for spacing */
+    margin-bottom: 30px;
 }
 
 input {
-    width: calc(100% - 20px); /* Adjusted for better fit */
-    padding: 15px; /* Increased padding for comfort */
+    width: calc(100% - 20px);
+    padding: 15px;
     border: none;
     border-radius: 5px;
     background-color: #444444;
     color: white;
-    font-size: 1.2em; /* Increased font size */
-    transition: background-color 0.3s ease, box-shadow 0.3s ease; /* Improved focus effects */
+    font-size: 1.2em;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
     font-family: 'Agdasima';
-
 }
 
 input::placeholder {
@@ -103,22 +97,21 @@ input::placeholder {
 
 input:focus {
     outline: none;
-    box-shadow: 0 0 8px #ffcc00; /* Highlight border on focus */
+    box-shadow: 0 0 8px #ffcc00;
     background-color: #555555;
 }
 
-/* Button Styles */
 .btn {
     background: linear-gradient(45deg, #ffcc00, #ffdd33);
     border: none;
     padding: 15px;
     width: 100%;
     border-radius: 5px;
-    font-size: 1.5em; /* Increased button size */
+    font-size: 1.5em;
     font-family: 'Bebas Neue';
     color: #333;
     cursor: pointer;
-    transition: background 0.3s ease, transform 0.3s ease; /* Separate transitions */
+    transition: background 0.3s ease, transform 0.3s ease;
 }
 
 .btn:hover {
@@ -140,24 +133,23 @@ input:focus {
     text-decoration: underline;
 }
 
-/* Keycap Styles */
 .keycap {
     position: absolute;
-    width: 20px; /* Size of keycap */
+    width: 20px;
     height: 20px;
     background: #ffcc00;
     border-radius: 3px;
     transform: translate(-50%, -50%);
-    animation: bounce 1s infinite alternate; /* Animation for keycap */
+    animation: bounce 1s infinite alternate;
 }
 
 .keycap:nth-child(1) {
-    top: 50%; /* Position for username input */
+    top: 50%;
     left: 10px;
 }
 
 .keycap:nth-child(2) {
-    top: 50%; /* Position for password input */
+    top: 50%;
     left: 10px;
 }
 
@@ -170,7 +162,6 @@ input:focus {
     }
 }
 
-/* Mobile responsiveness */
 @media (max-width: 600px) {
     .login-container {
         width: 90%;
@@ -178,14 +169,14 @@ input:focus {
     }
 
     .input-group input {
-        width: 100%; /* Full width for input on mobile */
+        width: 100%;
     }
 
     .hero h2 {
-        font-size: 4em; /* Adjusted font size for smaller screens */
+        font-size: 4em;
     }
 
     .hero p {
-        font-size: 1em; /* Adjusted paragraph size for readability */
+        font-size: 1em;
     }
 }

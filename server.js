@@ -1,20 +1,21 @@
-const express = require('express');
-const cors = require('cors');
-const mysql = require('mysql2'); // Use mysql2 for better compatibility
-const bcrypt = require('bcrypt'); // To hash passwords
+import express from 'express';
+import cors from 'cors';
+import mysql from 'mysql2';
+import bcrypt from 'bcrypt';
+
 const app = express();
 const port = 3000;
 
 // Middleware
-app.use(cors()); // Enable CORS for all routes
-app.use(express.json()); // To parse JSON bodies
+app.use(cors());
+app.use(express.json());
 
 // MySQL connection setup
 const connection = mysql.createConnection({
     host: 'localhost',
     user: 'root', 
-    password: 'cyatine14', 
-    database: 'user_auth' 
+    password: 'trapinch12', 
+    database: 'kiaco' 
 });
 
 // Connect to MySQL
@@ -25,18 +26,21 @@ connection.connect((err) => {
     }
     console.log('Connected to MySQL database.');
 });
-
-// Sample login route
+// Login route
 app.post('/login', (req, res) => {
     const { username, password } = req.body;
 
-    // Example of a simple query to check credentials
-    connection.query('SELECT * FROM users WHERE username = ?', [username], (error, results) => {
+    // Log the incoming request body for debugging
+    console.log('Login attempt:', { username, password });
+
+    // Query the customer table to check credentials
+    connection.query('SELECT * FROM customer WHERE username = ?', [username], (error, results) => {
         if (error) {
             console.error('Error executing query:', error);
             return res.status(500).json({ message: 'Server error. Please try again later.' });
         }
 
+        // If the user is found
         if (results.length > 0) {
             const user = results[0];
 
@@ -48,23 +52,29 @@ app.post('/login', (req, res) => {
                 }
 
                 if (isMatch) {
+                    // Successful login
+                    console.log('Login successful for user:', username);
                     return res.status(200).json({ message: 'Login successful!' });
                 } else {
+                    // Invalid password
+                    console.warn('Invalid credentials for user:', username);
                     return res.status(401).json({ message: 'Invalid credentials.' });
                 }
             });
         } else {
+            // No user found with the given username
+            console.warn('Invalid credentials: user not found:', username);
             return res.status(401).json({ message: 'Invalid credentials.' });
         }
     });
-});
+})
 
 // Sign-up route
 app.post('/signup', (req, res) => {
-    const { username, password } = req.body;
+    const { username, password, email, address, phone } = req.body;
 
     // Check if username is already taken
-    connection.query('SELECT * FROM users WHERE username = ?', [username], (error, results) => {
+    connection.query('SELECT * FROM customer WHERE username = ?', [username], (error, results) => {
         if (error) {
             console.error('Error executing query:', error);
             return res.status(500).json({ message: 'Server error. Please try again later.' });
@@ -82,14 +92,18 @@ app.post('/signup', (req, res) => {
             }
 
             // Insert the new user into the database
-            connection.query('INSERT INTO users (username, password) VALUES (?, ?)', [username, hashedPassword], (error, results) => {
-                if (error) {
-                    console.error('Error executing query:', error);
-                    return res.status(500).json({ message: 'Server error. Please try again later.' });
-                }
+            connection.query(
+                'INSERT INTO customer (username, password, email, address, phone) VALUES (?, ?, ?, ?, ?)', 
+                [username, hashedPassword, email, address, phone], 
+                (error, results) => {
+                    if (error) {
+                        console.error('Error executing query:', error);
+                        return res.status(500).json({ message: 'Server error. Please try again later.' });
+                    }
 
-                return res.status(201).json({ message: 'User registered successfully!' });
-            });
+                    return res.status(201).json({ message: 'User registered successfully!' });
+                }
+            );
         });
     });
 });
@@ -98,15 +112,13 @@ app.post('/signup', (req, res) => {
 app.post('/check-username', (req, res) => {
     const { username } = req.body;
 
-    connection.query('SELECT * FROM users WHERE username = ?', [username], (error, results) => {
+    connection.query('SELECT * FROM customer WHERE username = ?', [username], (error, results) => {
         if (error) {
             console.error('Error executing query:', error);
             return res.status(500).json({ message: 'Server error. Please try again later.' });
         }
 
-        // Check if the username is available
-        const isAvailable = results.length === 0; // If no results, the username is available
-
+        const isAvailable = results.length === 0;
         return res.status(200).json({ available: isAvailable });
     });
 });

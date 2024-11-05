@@ -5,32 +5,55 @@
     <link href="https://fonts.googleapis.com/css2?family=Agdasima:wght@400;700&display=swap" rel="stylesheet">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Keyboard-Themed Login</title>
+    <title>Keyboard-Themed Login/Sign-Up</title>
     <link rel="stylesheet" href="Usernamecss.css">
+    <style>
+        .hidden {
+            display: none;
+        }
+        .error {
+            color: red;
+            margin-bottom: 10px;
+        }
+    </style>
 </head>
 <body>
     
-    <!-- Hero Section -->
+    <!-- Hero Section -->   
     <div class="hero">
         <h2>Welcome to Kia.Co</h2>
         <p>Discover the finest custom keyboards and mods designed just for you!</p>
     </div>
 
     <div class="container">
-        <!-- Login Section -->
-        <div class="login-container">
+        <!-- Login/Sign-Up Section -->
+        <div class="login-container" id="form-container">
             <div class="login-box">
                 <h2 id="form-title">Login</h2>
                 <p id="form-description">Enter your username and password</p>
+                
+                <!-- Error message display -->
+                <div id="error-message" class="error hidden"></div>
+
                 <form id="loginForm">
                     <div class="input-group">
                         <input type="text" id="username" placeholder="Username" required>
                     </div>
+                    <div class="input-group hidden" id="email-group">
+                        <input type="email" id="email" placeholder="Email" required>
+                    </div>
+                    <div class="input-group hidden" id="address-group">
+                        <input type="text" id="address" placeholder="Address" required>
+                    </div>
+                    <div class="input-group hidden" id="phone-group">
+                        <input type="text" id="phone" placeholder="Phone Number" required>
+                    </div>
                     <div class="input-group">
                         <input type="password" id="password" placeholder="Password" required>
                     </div>
-                    
-                    <button type="submit" class="btn" id="submit-btn">Login</button>
+                    <button type="submit" class="btn" id="submit-btn">Sign Up</button>
+                    <!-- New Login Button -->
+                    <button type="button" class="btn" id="second-login-btn">Login</button>  
                 </form>
                 <p id="toggle-text">Don't have an account? <a href="#" id="toggle-form">Sign up</a></p>
             </div>

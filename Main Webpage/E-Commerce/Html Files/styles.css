@@ -1,0 +1,195 @@
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap");
+
+:root {
+    --primary-color: #242c94;
+    --text: #ffffff;
+    --text-light: #494949;
+    --extra-light: #f4f6f5;
+    --white: #ffffff;
+    --max-width: 1200px;
+    --header-font: "Bebas Neue", serif;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Bebas Neue", sans-serif;
+    background: linear-gradient(135deg, #1a1a1a 50%, #262626 50%);
+    color: var(--text);
+}
+
+.container {
+    max-width: var(--max-width);
+    margin: auto;
+    padding: 2rem 1rem;
+    width: 90%; /* Make the container responsive */
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.logo {
+    width: 150px; /* Adjust logo size */
+}
+
+.breadcrumb {
+    margin-bottom: 1rem;
+    font-size: 1rem;
+    color: var(--text-light);
+}
+
+.product-section {
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap; /* Allow wrapping for smaller screens */
+}
+
+.product-left {
+    flex: 1;
+}
+
+.product-banner {
+    position: relative;
+}
+
+.outlet {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background-color: #ff0000;
+    color: white;
+    padding: 5px 10px;
+    font-size: 0.8rem;
+    border-radius: 5px;
+}
+
+.product-image {
+    width: 100%;
+    height: auto; /* Maintain aspect ratio */
+    border-radius: 10px;
+    object-fit: cover; /* Ensure images cover the area */
+}
+
+.thumbnails {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 1rem;
+}
+
+.thumbnails img {
+    width: 50px; /* Adjust thumbnail size */
+    height: 50px; /* Maintain square aspect ratio */
+    border-radius: 5px;
+    cursor: pointer;
+    transition: transform 0.2s;
+    object-fit: cover; /* Ensure thumbnails maintain aspect ratio */
+}
+
+.thumbnails img:hover {
+    transform: scale(1.1);
+}
+
+.favorite {
+    margin-top: 1rem;
+}
+
+.product-right {
+    flex: 2;
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Add subtle shadow */
+}
+#cart, #kiaLogo {
+    display: none; /* Hides the cart and the Kia logo */
+}
+.product-title {
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--text);
+    line-height: 1.2; /* Improve readability */
+}
+
+.product-rating {
+    margin: 0.5rem 0;
+}
+
+.price-section {
+    margin: 1rem 0;
+}
+
+.price {
+    color: #ff5733; /* Price color */
+    font-size: 1.5rem; /* Make price larger */
+    font-weight: bold;
+}
+
+.original-price {
+    text-decoration: line-through;
+    color: var(--text-light);
+}
+
+.quantity {
+    display: flex;
+    align-items: center;
+    margin: 1rem 0;
+}
+
+.qty-btn {
+    background-color: var(--primary-color);
+    color: var(--white);
+    border: none;
+    padding: 0.5rem;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.qty-btn:hover {
+    background-color: darken(var(--primary-color), 10%);
+    transform: translateY(-2px); /* Slight lift on hover */
+}
+
+input[type="number"] {
+    width: 50px;
+    text-align: center;
+    margin: 0 0.5rem;
+}
+
+.purchase-buttons {
+    margin-top: 1rem;
+}
+
+.add-to-cart {
+    background-color: var(--primary-color);
+    color: var(--white);
+    border: none;
+    padding: 1rem;
+    cursor: pointer;
+    border-radius: 5px;
+    width: 100%;
+    margin: 0.5rem 0;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.add-to-cart:hover {
+    background-color: darken(var(--primary-color), 10%);
+    transform: translateY(-2px); /* Slight lift on hover */
+}
+
+/* Media Queries for Responsive Design */
+@media (max-width: 768px) {
+    .product-section {
+        flex-direction: column; /* Stack items on smaller screens */
+    }
+
+    .product-right {
+        flex: 1; /* Allow the product right section to take full width */
+    }
+}

@@ -1,237 +1,197 @@
-  <!DOCTYPE html>
-  <html lang="en">
-    <head>
-      <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
-      <link href="https://fonts.googleapis.com/css2?family=Agdasima:wght@400;700&display=swap" rel="stylesheet">
-      <meta charset="UTF-8" />
-      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <link
-        href="https://cdn.jsdelivr.net/npm/remixicon.css"
-        rel="stylesheet"
-      />
-      <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
-    />
-      <link
-        rel="stylesheet"
-        href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
-      />
-      <link rel="stylesheet" href="MainWeb.css" />                                                  
-      <title>Web Design Mastery | Kia.co</title>
-    </head>
-    <body>
-      <nav>
-        <div class="nav__header">
-          <div class="nav__logo">
-            <a href="#" class="logo">Kia.co</a>
-          </div>
-          <div class="nav__menu__btn" id="menu-btn">
-            <i class="ri-menu-line"></i>
-          </div>
-        </div>
-        <ul class="nav__links" id="nav-links">
-          <li><a href="#home">Home</a></li>
-          <li><a href="#about">About</a></li>
-          <li><a href="#product">Products</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-        <div class="nav__search" id="nav-search">
-          <input type="text" placeholder="Search" />
-          <span><i class="ri-search-2-line"></i></span>
-        </div>
-      </nav>
-      <!-- Profile Icon Section -->
-      <div class="profile-icon" id="profileIcon" onclick="toggleDropdown()">
-        <span id="profileInitial"></span>
-        <div class="dropdown-menu" id="dropdownMenu">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Agdasima:wght@400;700&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://cdn.jsdelivr.net/npm/remixicon.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+  <link rel="stylesheet" href="MainWeb.css" />
+  <title>Web Design Mastery | Kia.co</title>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="nav__header">
+      <div class="nav__logo">
+        <a href="#" class="logo">Kia.co</a>
+      </div>
+      <div class="nav__menu__btn" id="menu-btn">
+        <i class="ri-menu-line"></i>
+      </div>
+      <div class="profile-icon" id="profileIcon">
+        <span id="profileInitial">U</span> <!-- This will show the user’s initial -->
+        <div class="dropdown-menu" id="profileDropdown">
             <a href="/profile">Profile</a>
-            <a href="#" onclick="logout()">Logout</a>
+            <a href="/Username and Login Codes/Username.Html" onclick="logout()">Logout</a>
         </div>
     </div>
-    
-      <header class="section__container header__container" id="home">
-        <div class="header__image">
-          <img src="Images/IMG_9806.jpeg" alt="header" />
+    </div>
+    <ul class="nav__links" id="nav-links">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#product">Products</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div class="nav__search" id="nav-search">
+      <input type="text" placeholder="Search" class="search-disabled" disabled />
+      <span><i class="ri-search-2-line"></i></span>
+  </div>
+  </nav>
+  <div class="nav__cart" id="cart">
+    <img src="Images/1.png" alt="Cart" class="cart-icon" id="cartIcon" />
+    <span class="cart-counter" id="cartCounter">0</span>
+    <button id="clearCartButton">Clear Cart</button>
+    <!-- Dropdown menu for cart items -->
+    <div class="cart-dropdown" id="cartDropdown" style="display: none;"> <!-- Start hidden -->
+        <p class="empty-message"></p>
+        <div class="cart-items" id="cartItemsContainer"></div>
+        <button id="checkoutBtn">Checkout</button>
+    </div>
+</div>
+</div>
+ 
+  <header class="section__container header__container" id="home">
+    <div class="header__image">
+      <img src="Images/IMG_9806.jpeg" alt="header" />
+    </div>
+    <div class="header__content">
+      <div>
+        <h1>We Help You Make Your Dream Keyboard</h1>
+        <p>
+          We specialize in creating customized keyboards that blend aesthetics with functionality. Whether you prefer a sleek, minimalist design or a vibrant setup, our professional designers will collaborate with you to craft a keyboard that reflects your style. From custom switches and keycaps to layout and lighting options, we ensure every detail aligns with your unique vision for a one-of-a-kind keyboard.
+        </p>
+      </div>
+    </div>
+  </header>
+  
+  <section class="section__container about__container" id="about">
+    <div class="about__header">
+      <div>
+        <h2 class="section__header">About us</h2>
+        <p class="section__description">
+          Our passion for exceptional craftsmanship drives us to curate the best pieces for every Keyboard in your set ups.
+        </p>
+      </div>
+      <button class="about__btn">Learn More</button>
+    </div>
+    <div class="about__content">
+      <div class="about__image">
+        <img src="Images/best-budget-mechanical-keyboards-20230419-medium.jpg" alt="about" />
+      </div>
+      <div class="about__grid">
+        <div class="about__card">
+          <h3>1.</h3>
+          <h4>Who we are</h4>
+          <p>You get a 2-week free keycaps replacement. We want you to.</p>
         </div>
-        <div class="header__content">
-          <div>
-            <h1>We Help You Make Your Dream Keyboard</h1>
-            <p>
-              We specialize in creating customized keyboards that blend aesthetics with functionality. Whether you prefer a sleek, minimalist design or a vibrant setup, our professional designers will collaborate with you to craft a keyboard that reflects your style. From custom switches and keycaps to layout and lighting options, we ensure every detail aligns with your unique vision for a one-of-a-kind keyboard.          </p>
-          </div>
+        <div class="about__card">
+          <h3>2.</h3>
+          <h4>What do we do</h4>
+          <p>We give you a free course that guides you through the process.</p>
         </div>
-      </header>
-
-      <section class="section__container deals__container">
-        <div class="deals__card">
-          <h2 class="section__header">Hot 🔥 deals for you</h2>
-          <p>Online shopping for artisanal sales direct to consumers</p>
+        <div class="about__card">
+          <h3>3.</h3>
+          <h4>How do we help</h4>
+          <p>Use our multimedia lectures, videos, and coaching sessions.</p>
         </div>
-        <div class="deals__card">
-          <span><i class="ri-cash-line"></i></span>
-          <h4>1.5% cashback</h4>
-          <p>Earn a 5% cashback reward on every purchase you make!</p>
+        <div class="about__card">
+          <h3>4.</h3>
+          <h4>Create success story</h4>
+          <p>With access to online learning resources anyone can transform.</p>
         </div>
-        <div class="deals__card">
-          <span><i class="ri-calendar-schedule-line"></i></span>
-          <h4>End of the month SALE</h4>
-          <p>
-            Take advantage of our end of the month discounts, completely interest-free!
-          </p>
-        </div>
-        <div class="deals__card">
-          <span><i class="ri-money-rupee-circle-line"></i></span>
-          <h4>Save money</h4>
-          <p>
-            Discover unbeatable prices and save big money on top-quality
-            Keyboard!
-          </p>
-        </div>
-      </section>
-
-      <section class="section__container about__container" id="about">
-        <div class="about__header">
-          <div>
-            <h2 class="section__header">About us</h2>
-            <p class="section__description">
-              Our passion for exceptional craftsmanship drives us to curate the
-              best pieces for every Keyboard in your set ups.
-            </p>
-          </div>
-          <button class="about__btn">Learn More</button>
-        </div>
-        <div class="about__content">
-          <div class="about__image">
-            <img src="Images/best-budget-mechanical-keyboards-20230419-medium.jpg" alt="about" />
-          </div>
-          <div class="about__grid">
-            <div class="about__card">
-              <h3>1.</h3>
-              <h4>Who we are</h4>
-              <p>
-                You get a 2-week free  keycaps replacement. We want you
-                to.
-              </p>
-            </div>
-            <div class="about__card">
-              <h3>2.</h3>
-              <h4>What do we do</h4>
-              <p>
-                We give you a free course that guides you through the process.
-              </p>
-            </div>
-            <div class="about__card">
-              <h3>3.</h3>
-              <h4>How do we help</h4>
-              <p>Use our multimedis lectures, videos, and coaching sessions.</p>
-            </div>
-            <div class="about__card">
-              <h3>4.</h3>
-              <h4>Create success story</h4>
-              <p>
-                With access to online learning resources anyone can transform.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-      <section class="section__container product__container" id="product">
-        <h2 class="section__header">Products</h2>
-        <div class="product__grid">
-          <a href="WebDev/keycaps.html" class="product__card">
-            <h4>Keycaps</h4>
-            <p>₱2500 - ₱5000</p>
-            <img src="Images/256776431_634250027756265_3941236287237691336_n (1).jpg" alt="Keycaps" />
-          </a>
-          <a href="WebDev/60percent-keyboard.html" class="product__card">
-            <h4>60% Keyboard</h4>
-            <p>₱3000 - ₱5000</p>
-            <img src="Images/IMG_9800.jpeg" alt="60% Keyboard" />
-          </a>
-          <a href="WebDev/100percent-keyboard.html" class="product__card">
-            <h4>100% Keyboard</h4>
-            <p>₱3000 - ₱8000</p>
-            <img src="Images/IMG_9716.jpeg" alt="100% Keyboard" />
-          </a>
-          <a href="WebDev/Table Mat for Keyboards.html" class="product__card">
-            <h4>Hand Table Mat for Keyboard</h4>
-            <p>₱500 - ₱2000</p>
-            <img src="Images/IMG_9805.jpeg" alt="Hand Table Mat" />
-          </a>
-          <a href="WebDev/modding-services.html" class="product__card">
-            <h4>Keyboard Modding Services</h4>
-            <p>₱100 - ₱2000</p>
-            <img src="Images/IMG_9715.jpeg" alt="Keyboard Modding Services" />
-          </a>
-          <a href="WebDev/keyboard-repairs.html" class="product__card">
-            <h4>Repairs</h4>
-            <p>₱300 - ₱1500</p>
-            <img src="Images/IMG_9801.jpeg" alt="Repairs" />
-          </a>
-        </div>
-      </section>
-      
-      <section class="section__container client__container">
-        <div class="client__content">
-          <h2 class="section__header">Client Reviews</h2>
-          <p class="section__description">
-            Testimonials Highlighting Our Commitment to Quality, Exceptional
-            Service, and Customer Satisfaction
-          </p>
-          <!-- Slider main container -->
-          <div class="swiper">
-            <!-- Additional required wrapper -->
-            <div class="swiper-wrapper">
-              <!-- Slides -->
-              <div class="swiper-slide">
-                <div class="client__card">
-                  <img src="Images/IMG_9802.jpeg" alt="user" />
-                  <div>
-                    <p>
-                      Kia.co transformed my living space with their beautiful
-                      and affordable Keyboard. The 5% cashback was a delightful
-                      bonus!
-                    </p>
-                    <h4>Neil Genesis Cunanan</h4>
-                    <h4>Zaki James Maynard Dawa</h4>
-                    <h4>Karl Daniel Narsolis</h4>
-                    <h5>Computer Engineer Students</h5>
-                  </div>
-                </div>
+      </div>
+    </div>
+  </section>
+  
+  <section class="section__container product__container" id="product">
+    <h2 class="section__header">Products</h2>
+    <div class="product__grid">
+      <a href="Html Files/keycaps.html" class="product__card">
+        <h4>Keycaps</h4>
+        <p>₱1000 - ₱5000</p>
+        <img src="Images/256776431_634250027756265_3941236287237691336_n (1).jpg" alt="Keycaps" />
+      </a>
+      <a href="Html Files/60percent-keyboard.html" class="product__card">
+        <h4>60% Keyboard</h4>
+        <p>₱25000 - ₱5000</p>
+        <img src="Images/IMG_9800.jpeg" alt="60% Keyboard" />
+      </a>
+      <a href="Html Files/100percent-keyboard.html" class="product__card">
+        <h4>100% Keyboard</h4>
+        <p>₱3000 - ₱8000</p>
+        <img src="Images/IMG_9716.jpeg" alt="100% Keyboard" />
+      </a>
+      <a href="Html Files/Table Mat for Keyboards.html" class="product__card">
+        <h4>Hand Table Mat for Keyboard</h4>
+        <p>₱500 - ₱2000</p>
+        <img src="Images/IMG_9805.jpeg" alt="Hand Table Mat" />
+      </a>
+      <a href="Html Files/modding-services.html" class="product__card">
+        <h4>Keyboard Modding Services</h4>
+        <p>₱100 - ₱2000</p>
+        <img src="Images/IMG_9715.jpeg" alt="Keyboard Modding Services" />
+      </a>
+      <a href="Html Files/keyboard-repairs.html" class="product__card">
+        <h4>Repairs</h4>
+        <p>₱300 - ₱1500</p>
+        <img src="Images/IMG_9801.jpeg" alt="Repairs" />
+      </a>
+    </div>
+  </section>
+  <section class="section__container client__container">
+    <div class="client__content">
+      <h2 class="section__header">Client Reviews</h2>
+      <p class="section__description">
+        Testimonials Highlighting Our Commitment to Quality, Exceptional Service, and Customer Satisfaction
+      </p>
+      <div class="swiper">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide">
+            <div class="client__card">
+              <img src="Images/IMG_9802.jpeg" alt="user" />
+              <div>
+                <p>
+                  Kia.co transformed my living space with their beautiful and affordable Keyboard. The 5% cashback was a delightful bonus!
+                </p>
+                <h4>Neil Genesis Cunanan</h4>
+                <h4>Zaki James Maynard Dawa</h4>
+                <h4>Karl Daniel Narsolis</h4>
+                <h5>Computer Engineer Students</h5>
               </div>
-              <div class="swiper-slide">
-                <div class="client__card">
-                  <img src="Images/IMG_9803.jpeg" alt="user" />
-                  <div>
-                    <p>
-                      Exceptional quality and service! The Keybaord is stunning,
-                      and the 30-day payment terms made it incredibly convenient.
-                    </p>
-                    <h4>Zaki James Maynard W. Dawa</h4>
-                    <h5>Computer Engineer Student</h5>
-                  </div>
-                </div>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="client__card">
+              <img src="Images/IMG_9803.jpeg" alt="user" />
+              <div>
+                <p>
+                  Exceptional quality and service! The Keyboard is stunning, and the 30-day payment terms made it incredibly convenient.
+                </p>
+                <h4>Zaki James Maynard W. Dawa</h4>
+                <h5>Computer Engineer Student</h5>
               </div>
-              <div class="swiper-slide">
-                <div class="client__card">
-                  <img src="Images/IMG_9804.jpeg" alt="user" />
-                  <div>
-                    <p>
-                      The End of the month terms made it easy for us to Upgrade and maintain our new Keyboard
-                      without financial stress. Highly recommended!
-                    </p>
-                    <h4>Neil Genesis Cunanan</h4>
-                    <h4>Zaki James Maynard Dawa </h4>
-                    <h4>Karl Daniel Narsolis</h4>
-                    <h5>Computer Engineering Students</h5>
-                  </div>
-                </div>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="client__card">
+              <img src="Images/IMG_9804.jpeg" alt="user" />
+              <div>
+                <p>
+                  The End of the month terms made it easy for us to Upgrade and maintain our new Keyboard without financial stress. Highly recommended!
+                </p>
+                <h4>Karl Daniel Narsolis</h4>
+                <h5>Computer Engineer Student</h5>
               </div>
             </div>
           </div>
         </div>
-      </section>
+        <div class="swiper-pagination"></div>
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+      </div>
+    </div>
+  </section>
 
       <footer class="footer" id="contact">
         <div class="section__container footer__container">
@@ -292,7 +252,7 @@
         </div>
       </footer>
 
-      <script src="https://unpkg.com/scrollreveal"></script>
+      <script src="https://unpkg.com/scrollreveal"></script>s
       <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
       <script src="main.js"></script>
     </body>

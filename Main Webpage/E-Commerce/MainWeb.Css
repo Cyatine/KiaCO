@@ -29,7 +29,11 @@
     font-family: var(--header-font);
     color: var(--primary-color);
   }
-
+  
+  .section__header .h2 {
+    color: var(#ff0000);
+  }
+  
   .section__description {
     font-size: 1.1rem;
     color: var(--text-light);
@@ -67,25 +71,31 @@
   }
 
   nav {
-    position: fixed;
-    isolation: isolate;
+    position: fixed; /* Keeps the navbar at the top */
     width: 100%;
-    max-width: var(--max-width);
-    margin-inline: auto;
-    z-index: 9;
-  }
+    max-width: 100%;
+    margin-inline: auto; /* Centers the navbar */
+    z-index: 9; /* Ensures it stays above other content */
+    background-color: #242c94; /* Optional: background for visibility */
+}
 
+  /* New styles for the right-side icons container */
   .nav__header {
-    padding: 1rem;
-    width: 100%;
     display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background-color: var(--primary-color);
-  }
+    justify-content: space-between; /* Keeps nav links on one side and logo on the other */
+    align-items: center; /* Center vertically */
+    padding: 10px; /* Optional: adjust padding for the whole nav */
+}
+
+.nav__right-icons {
+  display: flex; /* Align the cart and profile icon in a row */
+  align-items: center; /* Center vertically */
+}
 
   .nav__logo .logo {
     color: var(--white);
+    margin-right: auto; /* Pushes the logo to the left without affecting nav links */
+    padding-left: 349px; /* Adjusts the left padding for spacing */
   }
 
   .nav__menu__btn {
@@ -106,7 +116,6 @@
     flex-direction: column;
     gap: 2rem;
     transition: 0.5s;
-    z-index: -1;
     transform: translateY(-100%);
   }
 
@@ -115,20 +124,27 @@
   }
 
   .nav__links a {
-    font-weight: 500;
+    font-size: 20px;
     color: var(--white);
   }
 
   .nav__search {
-    display: none;
-  }
+    display: none; /* Hides the search element completely */
+}
+
+.search-disabled {
+  pointer-events: none; /* Prevents interaction */
+  opacity: 0; /* Makes it invisible */
+  height: 0; /* Optional: Set height to 0 to avoid layout space */
+  width: 0; /* Optional: Set width to 0 to avoid layout space */
+}
 
   /* Profile Icon Styling */
 .profile-icon {
   width: 40px;
   height: 40px;
-  background-color: #333; /* Dark background color for the icon */
-  color: #fff; /* Text color */
+  background-color: #ffffff; /* Dark background color for the icon */
+  color: #e20000; /* Text color */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -136,45 +152,112 @@
   font-size: 18px;
   font-weight: bold;
   position: absolute;
-  top: 20px;
-  right: 20px;
+  top: 23px;
+  right: 360px;
   cursor: pointer;
 }
 
-.profile-icon:hover {
-  background-color: #555; /* Slightly lighter on hover */
+.dropdown-menu {
+  display: none; /* Initially hidden */
+  position: absolute; /* Position it absolutely */
+  top: 100%; /* Position below the icon */
+  right: 0; /* Align to the right */
+  background: white; /* Background color */
+  border: 1px solid #ccc; /* Optional border */
+  z-index: 1000; /* Ensure it appears above other content */
 }
 
-/* Dropdown Menu */
-.dropdown-menu {
-  display: none;
-  position: absolute;
-  top: 100%;
-  right: 0;
-  background-color: #333;
-  color: #fff;
-  padding: 10px;
-  border-radius: 5px;
-  width: 100px;
-  text-align: center;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+.dropdown-menu.active {
+  display: block; /* Show dropdown when active */
 }
 
 .dropdown-menu a {
-  color: #fff;
-  text-decoration: none;
-  display: block;
-  padding: 5px 0;
+  display: block; /* Make each link block level for easy clicking */
+  padding: 10px; /* Padding for clickable area */
+  text-decoration: none; /* Remove underline */
+  color: black; /* Text color */
 }
-
 .dropdown-menu a:hover {
-  background-color: #444;
+  background: #f0f0f0; /* Highlight on hover */
 }
 
 /* Show dropdown menu */
 .profile-icon.active .dropdown-menu {
   display: block;
 }
+
+.profile-icon {
+  cursor: pointer; /* Change cursor to pointer */
+  display: flex; /* Allow profile icon to be flex */
+  align-items: center; /* Center items vertically */
+}
+
+.nav__cart {
+  position: relative;
+  display: inline-block;
+  margin-left: 1420px; /* Adjust as necessary */
+  bottom: 67px;
+}
+
+.cart-dropdown {
+  display: none;
+  position: absolute;
+  top: 50px; /* Adjust based on the size of your cart icon */
+  right: 16px;
+  background-color: white;
+  border: 1px solid #ddd;
+  padding: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 200px;
+  z-index: 1000;
+}
+
+/* Remove hover effect - no longer show dropdown on hover */
+.nav__cart:hover .cart-dropdown {
+  display: none; /* No display change on hover */
+}
+
+
+/* Add an explicit style for when the cart is active if needed */
+.nav__cart.active .cart-dropdown {
+  display: block; /* Change to block when active */
+}
+
+/* Styles for cart items */
+.cart-item {
+  padding: 5px 0;
+  border-bottom: 1px solid #eee; /* Separator line */
+}
+
+.cart-item:last-child {
+  border-bottom: none; /* Remove border for the last item */
+}
+
+
+.cart-icon {
+  width: 56px; /* Set the size you want */
+  height: 50px ;
+  cursor: pointer;
+}
+
+.cart-counter {
+    position: absolute;
+    top: -5px;
+    right: 1px;
+    background-color: red;
+    color: white;
+    border-radius: 50%;
+    padding: 5px 7px;
+    font-size: 16px;
+    font-weight: bold;
+    min-width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
 
 
   .header__container {
@@ -296,6 +379,24 @@
     color: var(--text-light);
   }
 
+ .about__wrapper {
+    background-color: var(--white); /* White background */
+    padding: 2rem; /* Add padding around the container */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Optional: Add shadow for depth */
+    margin: 2rem auto; /* Center the wrapper with auto margins */
+    max-width: 800px; /* Set a maximum width for the wrapper */
+    width: 90%; /* Optional: Set a responsive width */
+}
+
+.about__container {
+  background-color: #fff; /* White background */
+  border-radius: 20px; /* Increased border-radius for rounder corners */
+  padding: 2rem; /* Retain the existing padding */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Optional: Add shadow for depth */
+}
+
+
   .product__grid {
     margin-top: 4rem;
     display: grid;
@@ -368,8 +469,6 @@
     text-align: center;
     color: var(--text-light); /* Ensure text color contrasts with white */
   }
-
-
 
   .client__content .section__header {
     font-size: 3.25rem;
@@ -537,7 +636,7 @@
     }
 
     .nav__links a:hover {
-      color: var(--primary-color);
+      color: #ff0000;
     }
 
     .nav__search {

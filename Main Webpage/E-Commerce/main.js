@@ -1,131 +1,193 @@
-// Menu Button Functionality
-const menuBtn = document.getElementById("menu-btn");
-const navLinks = document.getElementById("nav-links");
-const menuBtnIcon = menuBtn.querySelector("i");
-
-menuBtn.addEventListener("click", (e) => {
-  navLinks.classList.toggle("open");
-
-  const isOpen = navLinks.classList.contains("open");
-  menuBtnIcon.setAttribute("class", isOpen ? "ri-close-line" : "ri-menu-line");
-});
-
-// Close menu on link click
-navLinks.addEventListener("click", (e) => {
-  navLinks.classList.remove("open");
-  menuBtnIcon.setAttribute("class", "ri-menu-line");
-});
-
-// JavaScript for Profile Icon
-document.addEventListener('DOMContentLoaded', function() {
-  // Retrieve the username from localStorage or use a default
-  const username = localStorage.getItem('username');
-  console.log("Retrieved username from localStorage:", username); // Debugging line
-
-  // Check if username exists in localStorage
-  if (username) {
-    console.log("Username found in localStorage:", username);
-    // Display the first letter of the username as the profile icon initial
-    const profileInitial = document.getElementById('profileInitial');
-    if (profileInitial) {
-      profileInitial.textContent = username.charAt(0).toUpperCase(); // Set to the first letter
-    }
-  } else {
-    console.log("No username found in localStorage, using default.");
-    // You can also set a default or handle as per your requirements
-    const profileInitial = document.getElementById('profileInitial');
-    if (profileInitial) {
-      profileInitial.textContent = 'U'; // Default initial
-    }
+document.addEventListener('DOMContentLoaded', function () {
+  // Function to update the tooltip based on the cart count
+  function updateCartTooltip() {
+      const cartCounter = document.getElementById("cartCounter").textContent;
+      const cartIcon = document.getElementById("cartIcon");
+      cartIcon.title = `Items in cart: ${cartCounter}`; // Set tooltip with the cart count
   }
-});
 
-// Toggle dropdown functionality for profile icon
-function toggleDropdown() {
-  const profileIcon = document.getElementById('profileIcon');
-  profileIcon.classList.toggle('active');
-}
-
-// Logout function
-function logout() {
-  localStorage.removeItem('username');
-  console.log("Username removed from localStorage."); // Debugging line
-  // Redirect to the login page in a specific folder
-  window.location.href = '/Username and Login Codes/Username.Html'; // absolute path
-}
-
-// Login function to save the username and redirect
-function loginUser() {
-  const usernameInput = document.getElementById('username').value;
-  if (usernameInput) {
-    // Store the username in local storage
-    localStorage.setItem('username', usernameInput);
-    console.log("Stored username in localStorage:", usernameInput); // Debugging line
-
-    // Check if the username has been successfully stored
-    const storedUsername = localStorage.getItem('username');
-    if (storedUsername) {
-      console.log("Username successfully stored in localStorage:", storedUsername);
-      // Redirect to Username.html in the specific folder after login
-      window.location.href = '/Username and Login Codes/Username.Html';
-    } else {
-      console.error("Failed to store username in localStorage.");
-    }
-  } else {
-    alert('Please enter a valid username');
+  // Function to update the cart count display
+  function updateCartCountDisplay() {
+      const cartCountElement = document.getElementById("cartCounter");
+      if (cartCountElement) {
+          const cartCount = localStorage.getItem('cartCount') || 0; // Get count from localStorage
+          cartCountElement.textContent = cartCount; // Update the displayed count
+          updateCartTooltip(); // Update tooltip as well
+      } else {
+          console.error('Cart count element not found on the main page!');
+      }
   }
-}
 
-// Attach event listener to login button
-document.getElementById('second-login-btn').addEventListener('click', loginUser);
+  // Function to update the cart count and localStorage
+  function updateCartCount(count) {
+      localStorage.setItem('cartCount', count); // Store the updated count in localStorage
+      updateCartCountDisplay(); // Update the display immediately
+  }
 
-// Search Functionality
-const navSearch = document.getElementById("nav-search");
+  // Example usage: Replace with the logic to get the actual count from your cart
+  const initialCartCount = localStorage.getItem('cartCount') || 0;
+  updateCartCount(initialCartCount); // Set initial count from localStorage
 
-navSearch.addEventListener("click", (e) => {
-  navSearch.classList.toggle("open");
-});
+  // Menu Button Functionality
+  const menuBtn = document.getElementById("menu-btn");
+  const navLinks = document.getElementById("nav-links");
+  const menuBtnIcon = menuBtn.querySelector("i");
 
-// Swiper initialization without scroll effects
-const swiper = new Swiper(".swiper", {
-  loop: true,
-});
-
-// Product Card Redirect Functionality
-const productCards = document.querySelectorAll('.product__card');
-
-// Add click event listener to each product card
-productCards.forEach((card, index) => {
-  card.addEventListener('click', function () {
-    // Redirect based on the product card index
-    switch (index) {
-      case 0:
-        window.location.href = 'keycaps.html'; // Link for Keycaps
-        break;
-      case 1:
-        window.location.href = 'keyboard60.html'; // Link for 60% Keyboard
-        break;
-      case 2:
-        window.location.href = 'keyboard100.html'; // Link for 100% Keyboard
-        break;
-      case 3:
-        window.location.href = 'hand-table-matt.html'; // Link for Hand Table Matt
-        break;
-      case 4:
-        window.location.href = 'keyboard-modding.html'; // Link for Keyboard Modding Services
-        break;
-      case 5:
-        window.location.href = 'repairs.html'; // Link for Repairs
-        break;
-      default:
-        console.log("No valid product card found.");
-        break;
-    }
+  menuBtn.addEventListener("click", (e) => {
+      navLinks.classList.toggle("open");
+      const isOpen = navLinks.classList.contains("open");
+      menuBtnIcon.setAttribute("class", isOpen ? "ri-close-line" : "ri-menu-line");
   });
-});
 
-// Optional: Add event listener for the dropdown toggle button (if not already handled in HTML)
-const profileToggleButton = document.getElementById('profileToggleBtn'); // Replace with your actual button ID
-if (profileToggleButton) {
-  profileToggleButton.addEventListener('click', toggleDropdown);
-}
+  // Close menu on link click
+  navLinks.addEventListener("click", () => {
+      navLinks.classList.remove("open");
+      menuBtnIcon.setAttribute("class", "ri-menu-line");
+  });
+
+  // Profile Icon Functionality
+  const username = localStorage.getItem('username');
+  const profileInitial = document.getElementById('profileInitial');
+  profileInitial.textContent = username ? username.charAt(0).toUpperCase() : 'U'; // Default initial
+
+  // Toggle dropdown functionality for profile icon
+  const profileIcon = document.getElementById('profileIcon');
+  const profileDropdown = document.getElementById('profileDropdown'); // Ensure this element exists
+
+  profileIcon.addEventListener('click', () => {
+      profileDropdown.classList.toggle('active'); // Toggle the dropdown visibility
+  });
+
+  // Close dropdown when clicking outside
+  document.addEventListener("click", function (event) {
+      if (!profileIcon.contains(event.target) && !profileDropdown.contains(event.target)) {
+          profileDropdown.classList.remove('active'); // Hide the dropdown if clicked outside
+      }
+  });
+
+  // Logout function
+  function logout() {
+      localStorage.removeItem('username');
+      window.location.href = '/Username and Login Codes/Username.Html';
+  }
+
+  // Login function to save the username and redirect
+  function loginUser() {
+      const usernameInput = document.getElementById('username').value;
+      if (usernameInput) {
+          localStorage.setItem('username', usernameInput);
+          window.location.href = '/Username and Login Codes/Username.Html';
+      } else {
+          alert('Please enter a valid username');
+      }
+  }
+
+  // Attach event listener to login button
+  const secondLoginBtn = document.getElementById('second-login-btn');
+  if (secondLoginBtn) {
+      secondLoginBtn.addEventListener('click', loginUser);
+  } else {
+      console.error("Element with ID 'second-login-btn' not found.");
+  }
+
+  // Search Functionality
+  const navSearch = document.getElementById("nav-search");
+  navSearch.addEventListener("click", (e) => {
+      navSearch.classList.toggle("open");
+  });
+
+  // Swiper initialization
+  const swiper = new Swiper(".swiper", {
+      loop: true,
+  });
+
+  // Product Card Redirect Functionality
+  const productCards = document.querySelectorAll('.product__card');
+
+  productCards.forEach((card, index) => {
+      card.addEventListener('click', function () {
+          const productLinks = [
+              'keycaps.html',
+              'keyboard60.html',
+              'keyboard100.html',
+              'hand-table-matt.html',
+              'keyboard-modding.html',
+              'repairs.html'
+          ];
+          const redirectUrl = productLinks[index];
+          if (redirectUrl) {
+              window.location.href = redirectUrl; // Redirect to the corresponding product page
+          } else {
+              console.log("No valid product card found.");
+          }
+      });
+  });
+
+  // Function to display cart items in the dropdown
+  function displayCartItems() {
+      const cartItemsContainer = document.getElementById("cartItemsContainer");
+      cartItemsContainer.innerHTML = ""; // Clear previous items
+
+      // Retrieve cart items from localStorage
+      const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+
+      if (cartItems.length === 0) {
+          cartItemsContainer.innerHTML = "<p>Your cart is empty.</p>";
+      } else {
+          cartItems.forEach(item => {
+              const itemElement = document.createElement("div");
+              itemElement.textContent = `${item.name} - ${item.price}`; // Customize as needed
+              cartItemsContainer.appendChild(itemElement);
+          });
+      }
+  }
+
+  // Toggle cart dropdown and display items
+  function toggleCart() {
+      const cartDropdown = document.getElementById("cartDropdown");
+      cartDropdown.style.display = cartDropdown.style.display === "block" ? "none" : "block";
+
+      if (cartDropdown.style.display === "block") {
+          displayCartItems(); // Show items when dropdown is opened
+      }
+  }
+  
+  // Event listeners for click to toggle the cart dropdown
+  const cartIcon = document.getElementById("cartIcon");
+  const cartDropdown = document.getElementById("cartDropdown");
+
+  // Toggle cart dropdown and display items on cart icon click
+  cartIcon.addEventListener("click", () => {
+      cartDropdown.style.display = cartDropdown.style.display === "block" ? "none" : "block";
+      if (cartDropdown.style.display === "block") {
+          displayCartItems(); // Show items when dropdown is opened
+      }
+  });
+
+  // Close dropdown when clicking outside
+  document.addEventListener("click", function (event) {
+      if (!cartIcon.contains(event.target) && !cartDropdown.contains(event.target)) {
+          cartDropdown.style.display = "none"; // Hide the dropdown if clicked outside
+      }
+  });
+
+  // Function to clear all items from the cart
+  function clearCart() {
+      // Clear cart items from localStorage
+      localStorage.removeItem('cartItems'); // Remove the cart items array
+      localStorage.setItem('cartCount', 0); // Reset cart count to 0
+      updateCartCountDisplay(); // Update the displayed cart count
+      displayCartItems(); // Update the cart dropdown display to show it's empty
+  }
+
+  // Event listener for clearing the cart
+  const clearCartButton = document.getElementById('clearCartButton');
+  if (clearCartButton) {
+      clearCartButton.addEventListener('click', clearCart); // Attach the clearCart function to the button click
+  } else {
+      console.error("Element with ID 'clearCartButton' not found.");
+  }
+
+  // Load cart count display when the page loads
+  updateCartCountDisplay(); // Load initial cart count display
+});

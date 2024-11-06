@@ -3,7 +3,7 @@
 :root {
     --primary-color: #242c94;
     --text: #ffffff;
-    --text-light: #494949;
+    --text-light: #b0b0b0; /* Slightly lighter for better contrast */
     --extra-light: #f4f6f5;
     --white: #ffffff;
     --max-width: 1200px;
@@ -20,34 +20,39 @@ body {
     font-family: "Bebas Neue", sans-serif;
     background: linear-gradient(135deg, #1a1a1a 50%, #262626 50%);
     color: var(--text);
+    font-size: 1.1rem; /* Increase base font size */
 }
 
 .container {
     max-width: var(--max-width);
     margin: auto;
     padding: 2rem 1rem;
-    width: 90%; /* Make the container responsive */
+    width: 90%;
 }
 
 .header {
     text-align: center;
-    margin-bottom: 2rem;
+    margin-bottom: 2.5rem;
 }
 
 .logo {
-    width: 150px; /* Adjust logo size */
+    font-size: 2.5rem; /* Adjust font size as needed */
+    font-weight: bold; /* Make it bold */
+    color: var(--white); /* Ensure the text color is white */
+    font-family: 'Bebas Neue', sans-serif; /* Ensure it uses the correct font */
 }
 
 .breadcrumb {
-    margin-bottom: 1rem;
-    font-size: 1rem;
+    margin-bottom: 1.5rem;
+    font-size: 1.2rem; /* Larger breadcrumb text */
     color: var(--text-light);
 }
 
 .product-section {
     display: flex;
     gap: 2rem;
-    flex-wrap: wrap; /* Allow wrapping for smaller screens */
+    flex-wrap: wrap;
+    margin-bottom: 2.5rem;
 }
 
 .product-left {
@@ -64,31 +69,31 @@ body {
     left: 10px;
     background-color: #ff0000;
     color: white;
-    padding: 5px 10px;
-    font-size: 0.8rem;
+    padding: 6px 12px;
+    font-size: 0.9rem;
     border-radius: 5px;
 }
 
 .product-image {
     width: 100%;
-    height: auto; /* Maintain aspect ratio */
+    height: auto;
     border-radius: 10px;
-    object-fit: cover; /* Ensure images cover the area */
+    object-fit: cover;
 }
 
 .thumbnails {
     display: flex;
-    gap: 0.5rem;
-    margin-top: 1rem;
+    gap: 0.6rem;
+    margin-top: 1.2rem;
 }
 
 .thumbnails img {
-    width: 50px; /* Adjust thumbnail size */
-    height: 50px; /* Maintain square aspect ratio */
+    width: 55px;
+    height: 55px;
     border-radius: 5px;
     cursor: pointer;
     transition: transform 0.2s;
-    object-fit: cover; /* Ensure thumbnails maintain aspect ratio */
+    object-fit: cover;
 }
 
 .thumbnails img:hover {
@@ -96,37 +101,36 @@ body {
 }
 
 .favorite {
-    margin-top: 1rem;
+    margin-top: 1.2rem;
 }
 
 .product-right {
     flex: 2;
     background-color: rgba(255, 255, 255, 0.1);
-    padding: 2rem;
+    padding: 2.5rem;
     border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Add subtle shadow */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
 }
+
 #cart, #kiaLogo {
-    display: none; /* Hides the cart and the Kia logo */
+    display: none;
 }
+
 .product-title {
-    font-size: 2rem;
+    font-size: 2.2rem;
     font-weight: bold;
     color: var(--text);
-    line-height: 1.2; /* Improve readability */
+    line-height: 1.3;
 }
 
 .product-rating {
-    margin: 0.5rem 0;
-}
-
-.price-section {
-    margin: 1rem 0;
+    margin: 0.6rem 0;
+    font-size: 1.1rem;
 }
 
 .price {
-    color: #ff5733; /* Price color */
-    font-size: 1.5rem; /* Make price larger */
+    color: #FF7F50;
+    font-size: 1.7rem;
     font-weight: bold;
 }
 
@@ -138,58 +142,63 @@ body {
 .quantity {
     display: flex;
     align-items: center;
-    margin: 1rem 0;
+    margin: 1.2rem 0;
+    font-size: 1.1rem;
 }
 
 .qty-btn {
     background-color: var(--primary-color);
     color: var(--white);
     border: none;
-    padding: 0.5rem;
+    padding: 0.7rem;
     cursor: pointer;
     border-radius: 5px;
     transition: background-color 0.3s, transform 0.3s;
 }
 
 .qty-btn:hover {
-    background-color: darken(var(--primary-color), 10%);
-    transform: translateY(-2px); /* Slight lift on hover */
+    background-color: #1d2191;
+    transform: translateY(-2px);
 }
 
 input[type="number"] {
-    width: 50px;
+    width: 60px;
     text-align: center;
     margin: 0 0.5rem;
+    font-size: 1.1rem;
 }
 
 .purchase-buttons {
-    margin-top: 1rem;
+    margin-top: 1.2rem;
 }
 
 .add-to-cart {
     background-color: var(--primary-color);
     color: var(--white);
     border: none;
-    padding: 1rem;
+    padding: 1.2rem;
     cursor: pointer;
     border-radius: 5px;
     width: 100%;
+    font-size: 1.2rem;
+    font-family: 'Bebas Neue', sans-serif; /* Added Bebas Neue font */
     margin: 0.5rem 0;
     transition: background-color 0.3s, transform 0.3s;
 }
 
 .add-to-cart:hover {
-    background-color: darken(var(--primary-color), 10%);
-    transform: translateY(-2px); /* Slight lift on hover */
+    background-color: #FF7F50;
+    transform: translateY(-2px);
 }
 
 /* Media Queries for Responsive Design */
 @media (max-width: 768px) {
     .product-section {
-        flex-direction: column; /* Stack items on smaller screens */
+        flex-direction: column;
     }
 
     .product-right {
-        flex: 1; /* Allow the product right section to take full width */
+        flex: 1;
+        padding: 2rem;
     }
 }

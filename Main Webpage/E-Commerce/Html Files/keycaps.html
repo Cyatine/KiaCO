@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GMK Kaiju Keycaps</title>
+    <title>GMK Keycaps</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="container">
         <header class="header">
-            <img src="" alt="Kia.Co" class="logo">
+            <span class="logo">Kia.Co</span> 
             <div id="cart">
                 <span class="cart-counter" id="cartCounter">0</span>
             </div>
@@ -20,24 +20,125 @@
             <a href="path/to/keycaps.html">Keycaps</a> 
         </div>
 
-         <div class="product-section">
+        <!-- GMK Kaiju Product Section -->
+        <div class="product-section" id="kaijuProduct">
             <div class="product-left">
                 <div class="product-banner">
-                    <img src="blue kb.jpg" alt="Keyboard Image" class="product-image">
+                    <img src="download.jpg" alt="GMK Kaiju Keycaps" class="product-image">
                 </div>
             </div>
-
             <div class="product-right">
                 <h1 class="product-title">GMK Kaiju Keycaps</h1>
                 <div class="price-section">
-                    <span class="Price">₱2500.00</span>
+                    <span class="price">₱2500.00</span>
+                </div>
+                <p class="product-description">Inspired by Japanese monsters, GMK Kaiju Keycaps bring unique aesthetics and durable design to any keyboard setup.</p>
+                <div class="quantity">
+                    <button class="qty-btn" onclick="decreaseQuantity('kaijuQty')">-</button>
+                    <input type="number" id="kaijuQty" value="1" min="1">
+                    <button class="qty-btn" onclick="increaseQuantity('kaijuQty')">+</button>
                 </div>
                 <div class="purchase-buttons">
-                    <button id="add-to-cart-button" class="add-to-cart">Add To Cart</button>
+                    <button id="kaijuAddToCart" class="add-to-cart">Add To Cart</button>
                 </div>
             </div>
         </div>
-        
+
+        <!-- GMK Soy Milk Product Section -->
+        <div class="product-section" id="soyMilkProduct">
+            <div class="product-left">
+                <div class="product-banner">
+                    <img src="GMK Soy Mlk.jpg" alt="GMK Soy Milk Keycaps" class="product-image">
+                </div>
+            </div>
+            <div class="product-right">
+                <h1 class="product-title">GMK Soy Milk Keycaps</h1>
+                <div class="price-section">
+                    <span class="price">₱1350.00</span>
+                </div>
+                <p class="product-description">The GMK Soy Milk Keycaps offer a minimalist and refreshing look, perfect for those who love clean aesthetics.</p>
+                <div class="quantity">
+                    <button class="qty-btn" onclick="decreaseQuantity('soyMilkQty')">-</button>
+                    <input type="number" id="soyMilkQty" value="1" min="1">
+                    <button class="qty-btn" onclick="increaseQuantity('soyMilkQty')">+</button>
+                </div>
+                <div class="purchase-buttons">
+                    <button id="soyMilkAddToCart" class="add-to-cart">Add To Cart</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- GMK Remen Product Section -->
+        <div class="product-section" id="remenProduct">
+            <div class="product-left">
+                <div class="product-banner">
+                    <img src="GMK Remen.jpg" alt="GMK Remen Keycaps" class="product-image">
+                </div>
+            </div>
+            <div class="product-right">
+                <h1 class="product-title">GMK Remen Keycaps</h1>
+                <div class="price-section">
+                    <span class="price">₱1750.00</span>
+                </div>
+                <p class="product-description">Designed with a nostalgic touch, the GMK Remen Keycaps bring a classic style with modern durability to your keyboard.</p>
+                <div class="quantity">
+                    <button class="qty-btn" onclick="decreaseQuantity('remenQty')">-</button>
+                    <input type="number" id="remenQty" value="1" min="1">
+                    <button class="qty-btn" onclick="increaseQuantity('remenQty')">+</button>
+                </div>
+                <div class="purchase-buttons">
+                    <button id="remenAddToCart" class="add-to-cart">Add To Cart</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Akko Macaw Product Section -->
+        <div class="product-section" id="macawProduct">
+            <div class="product-left">
+                <div class="product-banner">
+                    <img src="Akko Macaw.jpg" alt="Akko Macaw Keycaps" class="product-image">
+                </div>
+            </div>
+            <div class="product-right">
+                <h1 class="product-title">Akko Macaw Keycaps</h1>
+                <div class="price-section">
+                    <span class="price">₱2600.00</span>
+                </div>
+                <p class="product-description">Inspired by the vibrant colors of the macaw, the Akko Macaw Keycaps offer a bold and exotic look for any setup.</p>
+                <div class="quantity">
+                    <button class="qty-btn" onclick="decreaseQuantity('macawQty')">-</button>
+                    <input type="number" id="macawQty" value="1" min="1">
+                    <button class="qty-btn" onclick="increaseQuantity('macawQty')">+</button>
+                </div>
+                <div class="purchase-buttons">
+                    <button id="macawAddToCart" class="add-to-cart">Add To Cart</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- GMK Honor Product Section -->
+        <div class="product-section" id="honorProduct">
+            <div class="product-left">
+                <div class="product-banner">
+                    <img src="GMK Honor.png" alt="GMK Honor Keycaps" class="product-image">
+                </div>
+            </div>
+            <div class="product-right">
+                <h1 class="product-title">GMK Honor Keycaps</h1>
+                <div class="price-section">
+                    <span class="price">₱2900.00</span>
+                </div>
+                <p class="product-description">Inspired by traditional honor and legacy, the GMK Honor Keycaps offer a timeless design and premium build quality.</p>
+                <div class="quantity">
+                    <button class="qty-btn" onclick="decreaseQuantity('honorQty')">-</button>
+                    <input type="number" id="honorQty" value="1" min="1">
+                    <button class="qty-btn" onclick="increaseQuantity('honorQty')">+</button>
+                </div>
+                <div class="purchase-buttons">
+                    <button id="honorAddToCart" class="add-to-cart">Add To Cart</button>
+                </div>
+            </div>
+        </div>
     </div>
 
     <script src="script.js"></script>

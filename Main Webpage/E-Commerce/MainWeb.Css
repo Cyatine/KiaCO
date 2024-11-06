@@ -206,10 +206,52 @@
   right: 16px;
   background-color: white;
   border: 1px solid #ddd;
-  padding: 10px;
+  padding: 15px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  width: 200px;
+  width: 250px;  /* Increased width */
+  height: auto;
+  max-height: 300px;
+  overflow-y: auto;
   z-index: 1000;
+}
+
+.clearcart-button {
+  position: absolute;
+  bottom: 11px; /* Adjust to position 10px from the bottom of the dropdown */
+  right: 145px;  /* Position it 8px from the right inside the dropdown */
+  padding: 7px 15px; /* Slightly reduce padding */
+  background-color: #242c94; /* Same background color as checkout button */
+  color: white;
+  border: 1px solid #242c94; /* Same border color as the background for consistency */
+  cursor: pointer;
+  border-radius: 4px; /* Matching border-radius for a cohesive look */
+  font-size: 12px; /* Adjust font size to match the checkout button */
+  text-align: center;
+  width: auto;  /* Keep the width auto so it's not stretched across */
+  box-sizing: border-box; /* Ensures padding doesn't affect the width */
+  display: block; /* Ensure it's displayed as a block-level element to adjust with padding */
+}
+
+.clearcart-button:hover {
+  background-color: #c92a2a;
+}
+
+.checkout-button {
+  position: absolute;
+  bottom: 10px; /* Adjust to position 10px from the bottom */
+  right: 8px;  /* Position it 10px from the right */
+  padding: 8px 18px; /* Slightly reduce padding */
+  background-color: #242c94;
+  color: white;
+  border: 1px solid #ddd; /* Slightly lighter border */
+  cursor: pointer;
+  border-radius: 4px;
+  font-size: 12px; /* Smaller font size for a more compact button */
+  text-align: center;
+}
+
+.checkout-button:hover {
+  background-color: #c92a2a;
 }
 
 /* Remove hover effect - no longer show dropdown on hover */
@@ -217,16 +259,22 @@
   display: none; /* No display change on hover */
 }
 
-
 /* Add an explicit style for when the cart is active if needed */
 .nav__cart.active .cart-dropdown {
   display: block; /* Change to block when active */
 }
 
+#cartItemsContainer {
+  margin-bottom: 30px; /* Adds margin at the bottom to create space for the checkout button */
+  overflow-y: auto;  /* In case there are many items */
+  max-height: 200px; /* Optional: Max height of the items list */
+}
+
 /* Styles for cart items */
 .cart-item {
-  padding: 5px 0;
-  border-bottom: 1px solid #eee; /* Separator line */
+  margin-bottom: 10px; /* Adds space between each cart item */
+  font-size: 14px;
+  color: #333;
 }
 
 .cart-item:last-child {
@@ -713,6 +761,8 @@
     }
     
   }
+
+  
 
   @media (width > 1024px) {
     .deals__container {

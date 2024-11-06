@@ -8,7 +8,9 @@
   <link href="https://cdn.jsdelivr.net/npm/remixicon.css" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
   <link rel="stylesheet" href="MainWeb.css" />
-  <title>Web Design Mastery | Kia.co</title>
+  <title> Kia.co</title>
+  <link rel="icon" href="Images/Keyboards (1).png" type="image/png">
+
 </head>
 <body>
   <nav class="navbar">
@@ -41,15 +43,16 @@
   <div class="nav__cart" id="cart">
     <img src="Images/1.png" alt="Cart" class="cart-icon" id="cartIcon" />
     <span class="cart-counter" id="cartCounter">0</span>
-    <button id="clearCartButton">Clear Cart</button>
+    <div id="productList"></div> <!-- This will contain the dynamic Add to Cart buttons -->
+  
     <!-- Dropdown menu for cart items -->
     <div class="cart-dropdown" id="cartDropdown" style="display: none;"> <!-- Start hidden -->
-        <p class="empty-message"></p>
-        <div class="cart-items" id="cartItemsContainer"></div>
-        <button id="checkoutBtn">Checkout</button>
+      <p class="empty-message"></p>
+      <div class="cart-items" id="cartItemsContainer"></div>
+      <button id="clearCartButton" class="clearcart-button">Clear Cart</button>
+      <button id="checkoutButton" class="checkout-button">Checkout</button>
     </div>
-</div>
-</div>
+  </div>
  
   <header class="section__container header__container" id="home">
     <div class="header__image">

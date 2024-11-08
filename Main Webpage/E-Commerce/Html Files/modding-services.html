@@ -3,88 +3,136 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Product Page</title>
+    <title>Kia.Co</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="Images/Keyboards (1).png" type="image/png">
+
 </head>
 <body>
     <div class="container">
         <header class="header">
-            <img src="" alt="Kia.Co" class="logo">
+            <span class="logo">Kia.Co</span> 
+            <div id="cart">
+                <span class="cart-counter" id="cartCounter">0</span>
+            </div>
         </header>
 
         <div class="breadcrumb">
-            <a href="#">Kia.Co</a> > <a href="#">Gaming</a> > <a href="#">Computer Gaming</a> > <a href="#">Gaming Keyboards</a>
+            <a href='/E-Commerce/Kia.Co.E-Commerce.html'>Kia.Co</a> > 
+            <a href="modding-services.html">Keyboard Modding Services</a> 
         </div>
 
-        <div class="product-section">
-            <!-- Left Section: Product Image and Thumbnails -->
+        <!-- Full Keyboard Mod Service Section (No Quantity) -->
+        <div class="product-section" id="fullKeyboardModService">
             <div class="product-left">
                 <div class="product-banner">
-                    <span class="outlet">OUTLET</span>
-                    <img src="blue kb.jpg" alt="Keyboard Image" class="product-image">
+                    <img src="Images/FullKeyMod.png" alt="Full Keyboard Mod Service" class="product-image">
                 </div>
-
-                <div class="thumbnails">
-                    <img src="thumb1.png" alt="Thumbnail 1">
-                    <img src="thumb2.png" alt="Thumbnail 2">
-                    <img src="thumb3.png" alt="Thumbnail 3">
-                    <img src="thumb4.png" alt="Thumbnail 4">
-                </div>
-
-                <div class="share">
-                    <span>Share:</span>
-                    <a href="#"><img src="facebook logo.png" alt="Facebook"></a>
-                    <a href="#"><img src="instagram logo.jpg" alt="Instagram"></a>
-                </div>
-
-                <div class="favorite">❤️ Favorite (420)</div>
             </div>
-
-            <!-- Right Section: Product Info and Purchase Options -->
             <div class="product-right">
-                <h1 class="product-title">Zeus x Raiku Wired Rainbow LED Gaming Keyboard 98 Keys Silent Keys With Volume Knob Media Keys</h1>
-                <div class="product-rating">
-                    <span>4.8 ★</span> <span>75 Ratings</span>
+                <h1 class="product-title">Full Keyboard Mod</h1>
+                <div class="price-section">
+                    <span class="price">₱250.00</span>
                 </div>
-                <div class="flash-deal">
-                    <span class="flash-deal-text">FLASH DEALS</span>
-                    <span class="price">₱517</span>
-                    <span class="original-price">₱1,299</span>
-                    <div id="timer" class="timer">ENDS IN 00:55:30</div>
-                </div>
-
-                <div class="voucher-section">
-                    <button class="voucher">₱12 OFF</button>
-                    <button class="voucher">₱8 OFF</button>
-                    <button class="voucher">₱5 OFF</button>
-                </div>
-
-                <div class="return-info">Free & Easy Returns</div>
-                <div class="protection">Electronic Protection</div>
-                <div class="shipping-info">Shipping Discount for orders over ₱249</div>
-
-                <div class="color-options">
-                    <span>COLOR:</span>
-                    <button class="color-btn">LIGHT GREY</button>
-                    <button class="color-btn">DARK GREY</button>
-                    <button class="color-btn">ORANGE</button>
-                </div>
-
-                <div class="quantity">
-                    <span>Quantity:</span>
-                    <button class="qty-btn">-</button>
-                    <input type="number" value="1" min="1">
-                    <button class="qty-btn">+</button>
-                </div>
-
+                <p class="product-description">Complete modification service to enhance performance, sound, and aesthetics of your keyboard.</p>
                 <div class="purchase-buttons">
-                    <button class="add-to-cart">Add To Cart</button>
-                    <button class="buy-with-voucher">Buy With Voucher ₱517</button>
+                    <button id="fullKeyboardModAddToCart" class="add-to-cart">Add To Cart</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Soldering Service Section -->
+        <div class="product-section" id="solderingService">
+            <div class="product-left">
+                <div class="product-banner">
+                    <img src="Images/Soldering.png" alt="Keyboard Soldering Service" class="product-image">
+                </div>
+            </div>
+            <div class="product-right">
+                <h1 class="product-title">Keyboard Solder/Desolder & (Millmax) </h1>
+                <div class="price-section">
+                    <span class="price">₱20 each</span>
+                </div>
+                <p class="product-description">Professional soldering service for durable and reliable connections on your keyboard.</p>
+                <div class="quantity">
+                    <button class="qty-btn" onclick="decreaseQuantity('solderingQty')">-</button>
+                    <input type="number" id="solderingQty" value="1" min="1">
+                    <button class="qty-btn" onclick="increaseQuantity('solderingQty')">+</button>
+                </div>
+                <div class="purchase-buttons">
+                    <button id="solderingAddToCart" class="add-to-cart">Add To Cart</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Cleaning Service Section (No Quantity) -->
+        <div class="product-section" id="cleaningService">
+            <div class="product-left">
+                <div class="product-banner">
+                    <img src="Images/Keyboard Cleaning.jpg" alt="Keyboard Cleaning Service" class="product-image">
+                </div>
+            </div>
+            <div class="product-right">
+                <h1 class="product-title">Keyboard Cleaning</h1>
+                <div class="price-section">
+                    <span class="price">₱60.00</span>
+                </div>
+                <p class="product-description">Complete cleaning service to keep your keyboard looking and performing like new.</p>
+                <div class="purchase-buttons">
+                    <button id="cleaningAddToCart" class="add-to-cart">Add To Cart</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Switch Lubing Service Section -->
+        <div class="product-section" id="switchLubingService">
+            <div class="product-left">
+                <div class="product-banner">
+                    <img src="Images/Lubing.png" alt="Switch Lubing Service" class="product-image">
+                </div>
+            </div>
+            <div class="product-right">
+                <h1 class="product-title">Switch Lubing</h1>
+                <div class="price-section">
+                    <span class="price">₱6.00 each</span>
+                </div>
+                <p class="product-description">Lubrication service for switches to reduce friction and enhance smoothness.</p>
+                <div class="quantity">
+                    <button class="qty-btn" onclick="decreaseQuantity('lubingQty')">-</button>
+                    <input type="number" id="lubingQty" value="1" min="1">
+                    <button class="qty-btn" onclick="increaseQuantity('lubingQty')">+</button>
+                </div>
+                <div class="purchase-buttons">
+                    <button id="lubingAddToCart" class="add-to-cart">Add To Cart</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Stabilizer Modification Service Section -->
+        <div class="product-section" id="stabilizerModService">
+            <div class="product-left">
+                <div class="product-banner">
+                    <img src="Images/StabsMod.png" alt="Stabilizer Modification Service" class="product-image">
+                </div>
+            </div>
+            <div class="product-right">
+                <h1 class="product-title">Stabilizer Modification</h1>
+                <div class="price-section">
+                    <span class="price">₱25.00</span>
+                </div>
+                <p class="product-description">Stabilizer tuning service to reduce rattle and improve sound quality.</p>
+                <div class="quantity">
+                    <button class="qty-btn" onclick="decreaseQuantity('stabilizerModQty')">-</button>
+                    <input type="number" id="stabilizerModQty" value="1" min="1">
+                    <button class="qty-btn" onclick="increaseQuantity('stabilizerModQty')">+</button>
+                </div>
+                <div class="purchase-buttons">
+                    <button id="stabilizerModAddToCart" class="add-to-cart">Add To Cart</button>
                 </div>
             </div>
         </div>
     </div>
 
-    <script src="script.js"></script>
+    <script src="moddingservices.js"></script>
 </body>
 </html>

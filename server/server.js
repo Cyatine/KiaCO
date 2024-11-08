@@ -2,6 +2,12 @@ import express from 'express';
 import cors from 'cors';
 import mysql from 'mysql2';
 import bcrypt from 'bcrypt';
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+// Get the current directory path
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const app = express();
 const port = 3000;
@@ -10,12 +16,16 @@ const port = 3000;
 app.use(cors());
 app.use(express.json());
 
+// Serve static files from both "Main Webpage" and "Username and Login Codes" folders
+app.use(express.static(path.join(__dirname, '../Main Webpage')));
+app.use(express.static(path.join(__dirname, '../Username and Login Codes')));
+
 // MySQL connection setup
 const connection = mysql.createConnection({
     host: 'localhost',
-    user: 'root', 
-    password: 'trapinch12', 
-    database: 'kiaco' 
+    user: 'root',
+    password: 'trapinch12',
+    database: 'kiaco'
 });
 
 // Connect to MySQL
@@ -26,6 +36,18 @@ connection.connect((err) => {
     }
     console.log('Connected to MySQL database.');
 });
+
+// Serve Username.Html at root path
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, '../Username and Login Codes', 'Username.Html'));
+});
+
+
+// Serve Kia.Co.Ecommerce.html
+app.get('/kia-co-ecommerce', (req, res) => {
+    res.sendFile(path.join(__dirname, '../E-Commerce', 'Kia.Co.E-commerce.html'));
+});
+
 // Login route
 app.post('/login', (req, res) => {
     const { username, password } = req.body;
@@ -67,7 +89,7 @@ app.post('/login', (req, res) => {
             return res.status(401).json({ message: 'Invalid credentials.' });
         }
     });
-})
+});
 
 // Sign-up route
 app.post('/signup', (req, res) => {

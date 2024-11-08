@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQs</title>
+    <link rel="stylesheet" href="FAQ.css">
+    <link rel="icon" href="Images/Keyboards (1).png" type="image/png">
+
+</head>
+<body>
+    <section class="client-reviews">
+        <h2>Frequently Asked Questions (FAQs)</h2>
+        
+        <div class="review-container">
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleAnswer(1)">Q1. How can I Join GDG Eldoret? <span class="icon">-</span></button>
+                <div class="faq-answer" id="answer1">
+                    Join our GDG Community <a href="#">Here</a> to become an official member.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleAnswer(2)">Q2. Must I be from Eldoret? <span class="icon">+</span></button>
+                <div class="faq-answer" id="answer2" style="display: none;">
+                    No, you do not have to be from Eldoret to join our community.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleAnswer(3)">Q3. Do we have any subscription fee? <span class="icon">+</span></button>
+                <div class="faq-answer" id="answer3" style="display: none;">
+                    No, there is no subscription fee to join GDG Eldoret.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleAnswer(4)">Q4. Where do I register for events early? <span class="icon">+</span></button>
+                <div class="faq-answer" id="answer4" style="display: none;">
+                    You can register for events on our official website or through our social media channels.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        function toggleAnswer(id) {
+            const answer = document.getElementById(`answer${id}`);
+            const icon = document.querySelector(`#answer${id}`).previousElementSibling.querySelector('.icon');
+            
+            if (answer.style.display === "none") {
+                answer.style.display = "block";
+                icon.textContent = "-";
+            } else {
+                answer.style.display = "none";
+                icon.textContent = "+";
+            }
+        }
+    </script>
+</body>
+</html>

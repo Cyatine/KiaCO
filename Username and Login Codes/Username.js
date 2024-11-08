@@ -103,7 +103,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     isSignUpMode = false;
                     updateForm();
                 }
-                window.location.href = '../Main Webpage/E-Commerce/Kia.Co.E-Commerce.html';
+                window.location.href = '/E-Commerce/Kia.Co.E-Commerce.html';
             } else {
                 errorMessage.textContent = result.message;
                 errorMessage.classList.remove('hidden');

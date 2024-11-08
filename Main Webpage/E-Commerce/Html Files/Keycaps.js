@@ -12,15 +12,24 @@ function addToCart(productName, productPrice, quantity) {
     // Retrieve existing cart items from localStorage
     let cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
     
-    // Create a new item object
-    const newItem = {
-        name: productName,
-        price: productPrice,
-        quantity: quantity
-    };
+    // Ensure quantity is always an integer
+    quantity = parseInt(quantity) || 1;
 
-    // Add the new item to the cart array
-    cartItems.push(newItem);
+    // Check if the product is already in the cart
+    const existingItemIndex = cartItems.findIndex(item => item.name === productName);
+
+    if (existingItemIndex > -1) {
+        // If item exists, update its quantity
+        cartItems[existingItemIndex].quantity += quantity;
+    } else {
+        // If item doesn't exist, create a new item and add to cart
+        const newItem = {
+            name: productName,
+            price: productPrice,
+            quantity: quantity
+        };
+        cartItems.push(newItem);
+    }
 
     // Store updated cart items back to localStorage
     localStorage.setItem('cartItems', JSON.stringify(cartItems));

@@ -1,0 +1,99 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+
+body {
+    font-family: 'Bebas Neue', Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f7fb;
+    color: #333;
+    box-sizing: border-box;
+    background: linear-gradient(135deg, #1a1a1a 50%, #262626 50%);
+}
+
+.checkout-container {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 40px;
+    background-color: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    font-size: 18px;
+    box-sizing: border-box;
+}
+
+.checkout-header {
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 30px;
+    text-align: left;
+    color: #242c94;
+    text-transform: uppercase;
+}
+
+.checkout-item {
+    display: flex;
+    align-items: center;
+    padding: 20px 0;
+    border-bottom: 1px solid #e1e4e8;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.checkout-item:hover {
+    background-color: #f9f9f9;
+    transform: scale(1.02);
+}
+
+.checkout-item img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-right: 20px;
+}
+
+.checkout-item-info {
+    flex-grow: 1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.item-title {
+    font-weight: bold;
+    font-size: 20px;
+    color: #333;
+}
+
+.item-price {
+    color: #e94e77;
+    font-weight: bold;
+    font-size: 20px;
+    padding-left: 20px;
+}
+
+.total-quantity {
+    margin-top: 20px;
+    text-align: left;
+    font-size: 20px;
+    color: #333;
+}
+
+.checkout-btn {
+    display: block;
+    margin: 20px auto;
+    padding: 15px 30px;
+    background-color: #242c94;
+    color: #ffffff;
+    border: none;
+    border-radius: 10px;
+    font-size: 20px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 100%;
+    font-family: 'Bebas Neue', Arial, sans-serif;
+}
+
+.checkout-btn:hover {
+    background-color: #382dd3;
+}

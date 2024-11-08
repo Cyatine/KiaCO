@@ -1,0 +1,78 @@
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap");
+
+:root {
+    --primary-color: #242c94;
+    --text: #ffffff;
+    --text-light: #494949;
+    --extra-light: #f4f6f5;
+    --white: #ffffff;
+    --max-width: 1200px;
+    --header-font: "Bebas Neue", serif;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--header-font);
+    background: linear-gradient(135deg, #1a1a1a 50%, #262626 50%);
+    color: var(--text);
+    
+}
+
+.client-reviews {
+    max-width: var(--max-width);
+    margin: auto;
+    padding: 3rem 1rem;
+    text-align: center;
+    color: var(--text);
+}
+
+.client-reviews h2 {
+    font-size: 2.5rem;
+    color: #f3f2f2;
+    margin-bottom: 1rem;
+}
+
+.review-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
+}
+
+.faq-item {
+    width: 100%;
+    max-width: 600px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.faq-question {
+    width: 100%;
+    padding: 1rem;
+    background-color: #d3d3d3;
+    border: none;
+    text-align: left;
+    font-size: 1.2rem;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font: 1.3em "Bebas Neue";;
+    color: #242c94;
+}
+
+.faq-question .icon {
+    font-size: 1.5rem;
+    color: var(--text-light);
+}
+
+.faq-answer {
+    padding: 1rem;
+    font-size: 1rem;
+    background-color: var(--extra-light);
+    color: var(--text-light);
+}

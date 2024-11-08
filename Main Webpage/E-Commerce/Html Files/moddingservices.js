@@ -11,7 +11,7 @@ function updateCartCount() {
 function addToCart(productName, productPrice, quantity) {
     // Retrieve existing cart items from localStorage
     let cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
-    
+
     // Ensure quantity is always an integer
     quantity = parseInt(quantity) || 1;
 
@@ -42,12 +42,10 @@ function addToCart(productName, productPrice, quantity) {
 
     // Optional: Show a message to the user
     alert(`${productName} has been added to your cart!`);
-    console.log('Cart updated:', cartItems);  // Debugging line
 }
 
 // Event listener for Add to Cart buttons
 document.addEventListener("DOMContentLoaded", () => {
-    console.log("DOM fully loaded and parsed"); // Debugging line
     updateCartCount(); // Update the cart count on load
 
     // Listen for changes to localStorage across all open tabs/pages
@@ -58,22 +56,20 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     // Attach event listeners for each Add to Cart button
-    const switches = [
-        { id: 'akkoV3RedSwitch', name: "Akko V3 Pro CB (45pcs)", price: "₱620.00", quantityId: 'akkoV3ProCreamBlackSwitchQty' },
-        { id: 'akkoV3BlueSwitch', name: "Akko V3 Piano Pro (45pcs)", price: "₱630.00", quantityId: 'akkoV3PianoProSwitchQty' },
-        { id: 'durockPomLinearSwitch', name: "Durock POM (10pcs)", price: "₱400.00", quantityId: 'durockPomLinearSwitchQty' },
-        { id: 'kttSeaSaltLemonSwitch', name: "KTT Sea Salt Lemon (10pcs)", price: "₱140.00", quantityId: 'kttSeaSaltLemonSwitchQty' },
-        { id: 'gateronProYellowSwitch', name: "Gateron Pro Yellow (10pcs)", price: "₱140.00", quantityId: 'gateronProYellowSwitchQty' }
+    const services = [
+        { id: 'fullKeyboardModAddToCart', name: "Full Keeb Mod", price: "₱250.00", quantity: 1 },
+        { id: 'solderingAddToCart', name: "Keeb Solder/Desolder & (Millmax)", price: "₱20.00", quantityId: 'solderingQty' },
+        { id: 'cleaningAddToCart', name: "Keeb Cleaning", price: "₱60.00", quantity: 1 },
+        { id: 'lubingAddToCart', name: "Switch Lubing", price: "₱6.00", quantityId: 'lubingQty' },
+        { id: 'stabilizerModAddToCart', name: "Stab Mod", price: "₱25.00", quantityId: 'stabilizerModQty' }
     ];
 
-    switches.forEach(switchItem => {
-        const addToCartButton = document.getElementById(`${switchItem.id}AddToCart`);
-        console.log('addToCartButton:', addToCartButton); // Debugging line
+    services.forEach(service => {
+        const addToCartButton = document.getElementById(service.id);
         if (addToCartButton) {
             addToCartButton.addEventListener('click', function() {
-                const quantity = document.getElementById(switchItem.quantityId).value;
-                console.log(`Adding ${switchItem.name} with quantity ${quantity}`); // Debugging line
-                addToCart(switchItem.name, switchItem.price, quantity);
+                const quantity = service.quantity || document.getElementById(service.quantityId).value;
+                addToCart(service.name, service.price, quantity);
             });
         }
     });

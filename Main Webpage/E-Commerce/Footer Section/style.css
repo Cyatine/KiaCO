@@ -1,0 +1,108 @@
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap");
+
+:root {
+    --primary-color: #242c94;
+    --text: #ffffff;
+    --text-light: #ffffff; /* Changed to white */
+    --extra-light: #f4f6f5;
+    --white: #ffffff;
+    --max-width: 1200px;
+    --header-font: "Bebas Neue", serif;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--header-font);
+    background: linear-gradient(135deg, #1a1a1a 50%, #262626 50%);
+    color: var(--text);
+    font-size: 18px; /* Increased base font size */
+}
+
+.contact-section {
+    max-width: var(--max-width);
+    margin: auto;
+    padding: 5rem 2rem; /* Increased padding */
+    text-align: center;
+    color: var(--text);
+}
+
+.contact-section h2 {
+    font-size: 3rem; /* Increased heading font size */
+    color: #f3f2f2;
+    margin-bottom: 2rem; /* Increased margin */
+}
+
+.contact-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 3rem; /* Increased gap between elements */
+}
+
+.contact-box {
+    flex: 1 1 350px; /* Increased flex-basis */
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 2rem; /* Increased padding */
+    border-radius: 15px; /* Increased border-radius */
+    backdrop-filter: blur(5px);
+}
+
+.contact-box h3 {
+    font-size: 2rem; /* Increased heading font size */
+    color: #3473fc;
+    margin-bottom: 1.5rem; /* Increased margin */
+}
+
+.contact-box p {    
+    font-size: 2rem; /* Increased font size */
+    color: #f3f2f2;
+    margin-bottom: 1rem; /* Increased margin */
+}
+
+.social-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem; /* Increased gap between buttons */
+    margin-top: 3rem; /* Increased margin */
+}
+
+.social-button {
+    font-size: 2rem; /* Increased font size for icons */
+    background-color: var(--primary-color);
+    color: var(--white);
+    padding: 1rem 1.5rem; /* Increased padding */
+    border: none;
+    border-radius: 8px; /* Increased border-radius */
+    cursor: pointer;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
+.confirmation-popup {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+}
+
+.confirmation-popup img {
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+}
+
+.confirmation-popup p {
+    margin: 0;
+    font-size: 14px;
+}

@@ -25,7 +25,7 @@
         <span id="profileInitial">U</span> <!-- This will show the user’s initial -->
         <div class="dropdown-menu" id="profileDropdown">
             <a href="/profile">Profile</a>
-            <a href="/Username and Login Codes/Username.Html" onclick="logout()">Logout</a>
+            <a href="/" onclick="logout()">Logout</a>
         </div>
     </div>
     </div>
@@ -46,11 +46,13 @@
     <div id="productList"></div> <!-- This will contain the dynamic Add to Cart buttons -->
   
     <!-- Dropdown menu for cart items -->
+
+    
     <div class="cart-dropdown" id="cartDropdown" style="display: none;"> <!-- Start hidden -->
       <p class="empty-message"></p>
-      <div class="cart-items" id="cartItemsContainer"></div>
+      <div id="cartItemsContainer"></div> <!-- Container to display cart items -->
       <button id="clearCartButton" class="clearcart-button">Clear Cart</button>
-      <button id="checkoutButton" class="checkout-button">Checkout</button>
+      <a href="Checkout/checkout.html" id="checkoutButton" class="checkout-button">Shopping Cart</a>
     </div>
   </div>
  
@@ -108,7 +110,7 @@
         <p>₱2500 - ₱8000</p>
         <img src="Images/Compact Keyboard.png" alt="60% Keyboard" />
       </a>
-      <a href="Html Files/80percent-keyboard.html" class="product__card">
+      <a href="Html Files/TKL Keyboards.html" class="product__card">
         <h4>TKL Keyboards</h4>
         <p>₱3000 - ₱8000</p>
         <img src="Images/download (2).jpg" alt="100% Keyboard" />
@@ -132,7 +134,7 @@
   </section>
   <section class="section__container client__container">
     <div class="client__content">
-      <h2 class="section__header">Client Reviews</h2>
+      <h2 class="section__header">Customer Feedback</h2>
       <p class="section__description">
         Testimonials Highlighting Our Commitment to Quality, Exceptional Service, and Customer Satisfaction
       </p>
@@ -210,31 +212,20 @@
             </ul>
           </div>
           <div class="footer__col">
-            <h4>Services</h4>
+            <h4>Contacts</h4>
             <ul class="footer__links">
-              <li><a href="#">Contact Us</a></li>
-              <li><a href="#">Press</a></li>
-              <li><a href="#">Help Center</a></li>
+              <li><a href="Footer Section/Contact Support.html">Contact Support</a></li></ul>
             </ul>
           </div>
           <div class="footer__col">
-            <h4>Resources</h4>
+            <h4>Know More </h4>
             <ul class="footer__links">
-              <li><a href="#">Pricing</a></li>
-              <li><a href="#">FAQs</a></li>
-              <li><a href="#">Contact Support</a></li>
-              <li><a href="#">Privacy Policy</a></li>
-              <li><a href="#">Terms</a></li>
-            </ul>
+              <li><a href="Footer Section/FAQ.html">FAQs</a></li>
           </div>
           <div class="footer__col">
-            <h4>Support</h4>
+            <h4>Location</h4>
             <ul class="footer__links">
-              <li><a href="#">Contact</a></li>
-              <li><a href="#">Affiliates</a></li>
-              <li><a href="#">Sitemap</a></li>
-              <li><a href="#">Cancelation Policy</a></li>
-              <li><a href="#">Security</a></li>
+              <li><a href="Footer Section/SiteMap.html">Sitemap</a></li>
             </ul>
           </div>
         </div>

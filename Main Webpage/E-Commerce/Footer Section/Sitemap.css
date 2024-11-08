@@ -1,0 +1,99 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif; /* Adjust font-family to match the main website */
+    color: #333; /* Main text color */
+    background-color: #f8f9fa; /* Light background color for better contrast */
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Header Section */
+.header {
+    text-align: center;
+    padding: 20px;
+    background-color: #242c94; /* Primary color from main website */
+    color: #fff; /* White text for contrast */
+    border-radius: 8px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); /* Subtle shadow for depth */
+}
+
+.subheader {
+    font-size: 2rem;
+    font-weight: bold;
+    letter-spacing: 1px; /* Spacing similar to the main website */
+}
+
+/* Map and Location Info Section */
+.map-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    gap: 20px; /* Consistent gap between elements */
+}
+
+.map-iframe {
+    width: 100%;
+    max-width: 600px;
+    height: 300px;
+    border: none;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15); /* Shadow for elevation */
+}
+
+.location-info {
+    text-align: center;
+    font-size: 1rem;
+    color: #333;
+    line-height: 1.6;
+}
+
+.location-info h3 {
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: #242c94;
+    margin-bottom: 10px;
+    text-transform: uppercase; /* Similar style as the main website header */
+}
+
+.location-info p {
+    margin: 8px 0;
+    line-height: 1.6;
+}
+
+.location-info strong {
+    color: #333;
+}
+
+/* Responsive Design */
+@media (min-width: 768px) {
+    .map-container {
+        flex-direction: row;
+        align-items: flex-start;
+        justify-content: space-between;
+    }
+
+    .map-iframe {
+        width: 55%;
+        margin-right: 20px;
+    }
+
+    .location-info {
+        width: 40%;
+        text-align: left;
+    }
+}

@@ -7,7 +7,7 @@ function updateCartCount() {
     }
 }
 
-// Function to add item to cart
+// Function to add item to cart and send data to the backend
 function addToCart(productName, productPrice, quantity) {
     // Retrieve existing cart items from localStorage
     let cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
@@ -42,6 +42,34 @@ function addToCart(productName, productPrice, quantity) {
 
     // Optional: Show a message to the user
     alert(`${productName} has been added to your cart!`);
+
+    // Send the updated cart data to the backend
+    const username = localStorage.getItem('username'); // Assuming the username is stored in localStorage
+    if (username) {
+        cartItems.forEach(item => {
+            fetch('/add-to-cart', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    username: username,
+                    productName: item.name,
+                    quantity: item.quantity,
+                    price: parseFloat(item.price.replace(/[^0-9.-]+/g, '')), // Clean price for backend (remove ₱ symbol)
+                }),
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.message) {
+                    console.log(data.message); // Handle backend response if necessary
+                }
+            })
+            .catch((error) => {
+                console.error('Error adding to cart:', error);
+            });
+        });
+    }
 }
 
 // Event listener for Add to Cart buttons

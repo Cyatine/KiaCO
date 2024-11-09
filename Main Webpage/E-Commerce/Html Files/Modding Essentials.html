@@ -3,88 +3,145 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Product Page</title>
+    <title>Modding Tools | Kia.Co</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="Images/Keyboards (1).png" type="image/png">
 </head>
 <body>
     <div class="container">
         <header class="header">
-            <img src="" alt="Kia.Co" class="logo">
+            <span class="logo">Kia.Co</span> 
+            <div id="cart">
+                <span class="cart-counter" id="cartCounter">0</span>
+            </div>
         </header>
 
         <div class="breadcrumb">
-            <a href="#">Kia.Co</a> > <a href="#">Gaming</a> > <a href="#">Computer Gaming</a> > <a href="#">Gaming Keyboards</a>
+            <a href='/E-Commerce/Kia.Co.E-Commerce.html'>Kia.Co</a> > 
+            <a href="modding-tools.html">Modding Tools</a>
         </div>
 
-        <div class="product-section">
-            <!-- Left Section: Product Image and Thumbnails -->
+        <!-- Switch Puller Product Section -->
+        <div class="product-section" id="switchPullerProduct">
             <div class="product-left">
                 <div class="product-banner">
-                    <span class="outlet">OUTLET</span>
-                    <img src="blue kb.jpg" alt="Keyboard Image" class="product-image">
+                    <img src="Images/Switch Puller.jpg" alt="Switch Puller" class="product-image">
                 </div>
-
-                <div class="thumbnails">
-                    <img src="thumb1.png" alt="Thumbnail 1">
-                    <img src="thumb2.png" alt="Thumbnail 2">
-                    <img src="thumb3.png" alt="Thumbnail 3">
-                    <img src="thumb4.png" alt="Thumbnail 4">
-                </div>
-
-                <div class="share">
-                    <span>Share:</span>
-                    <a href="#"><img src="facebook logo.png" alt="Facebook"></a>
-                    <a href="#"><img src="instagram logo.jpg" alt="Instagram"></a>
-                </div>
-
-                <div class="favorite">❤️ Favorite (420)</div>
             </div>
-
-            <!-- Right Section: Product Info and Purchase Options -->
             <div class="product-right">
-                <h1 class="product-title">Zeus x Raiku Wired Rainbow LED Gaming Keyboard 98 Keys Silent Keys With Volume Knob Media Keys</h1>
-                <div class="product-rating">
-                    <span>4.8 ★</span> <span>75 Ratings</span>
+                <h1 class="product-title">Switch Puller</h1>
+                <div class="price-section">
+                    <span class="price">₱55.00</span>
                 </div>
-                <div class="flash-deal">
-                    <span class="flash-deal-text">FLASH DEALS</span>
-                    <span class="price">₱517</span>
-                    <span class="original-price">₱1,299</span>
-                    <div id="timer" class="timer">ENDS IN 00:55:30</div>
-                </div>
-
-                <div class="voucher-section">
-                    <button class="voucher">₱12 OFF</button>
-                    <button class="voucher">₱8 OFF</button>
-                    <button class="voucher">₱5 OFF</button>
-                </div>
-
-                <div class="return-info">Free & Easy Returns</div>
-                <div class="protection">Electronic Protection</div>
-                <div class="shipping-info">Shipping Discount for orders over ₱249</div>
-
-                <div class="color-options">
-                    <span>COLOR:</span>
-                    <button class="color-btn">LIGHT GREY</button>
-                    <button class="color-btn">DARK GREY</button>
-                    <button class="color-btn">ORANGE</button>
-                </div>
-
+                <p class="product-description">Easily remove key switches from your keyboard with this durable and ergonomic switch puller tool.</p>
                 <div class="quantity">
-                    <span>Quantity:</span>
-                    <button class="qty-btn">-</button>
-                    <input type="number" value="1" min="1">
-                    <button class="qty-btn">+</button>
+                    <button class="qty-btn" onclick="decreaseQuantity('switchPullerQty')">-</button>
+                    <input type="number" id="switchPullerQty" value="1" min="1">
+                    <button class="qty-btn" onclick="increaseQuantity('switchPullerQty')">+</button>
                 </div>
-
                 <div class="purchase-buttons">
-                    <button class="add-to-cart">Add To Cart</button>
-                    <button class="buy-with-voucher">Buy With Voucher ₱517</button>
+                    <button id="switchPullerAddToCart" class="add-to-cart">Add To Cart</button>
                 </div>
             </div>
         </div>
+
+        <!-- Keycap Puller Product Section -->
+        <div class="product-section" id="keycapPullerProduct">
+            <div class="product-left">
+                <div class="product-banner">
+                    <img src="Images/Keycap Puller.jpg" alt="Keycap Puller" class="product-image">
+                </div>
+            </div>
+            <div class="product-right">
+                <h1 class="product-title">Keycap Puller</h1>
+                <div class="price-section">
+                    <span class="price">₱400.00</span>
+                </div>
+                <p class="product-description">Designed to remove and replace keycaps, this keycap puller is essential for any keyboard modding hobbyist.</p>
+                <div class="quantity">
+                    <button class="qty-btn" onclick="decreaseQuantity('keycapPullerQty')">-</button>
+                    <input type="number" id="keycapPullerQty" value="1" min="1">
+                    <button class="qty-btn" onclick="increaseQuantity('keycapPullerQty')">+</button>
+                </div>
+                <div class="purchase-buttons">
+                    <button id="keycapPullerAddToCart" class="add-to-cart">Add To Cart</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Lubing Kit Product Section -->
+        <div class="product-section" id="lubingKitProduct">
+            <div class="product-left">
+                <div class="product-banner">
+                    <img src="Images/Lubing Kit.jpg" alt="Lubing Kit" class="product-image">
+                </div>
+            </div>
+            <div class="product-right">
+                <h1 class="product-title">Krytox GPL 205g0 </h1>
+                <div class="price-section">
+                    <span class="price">₱300.00</span>
+                </div>
+                <p class="product-description">Enhance your keyboard's feel and sound with this comprehensive lubing kit, perfect for custom switches.</p>
+                <div class="quantity">
+                    <button class="qty-btn" onclick="decreaseQuantity('lubingKitQty')">-</button>
+                    <input type="number" id="lubingKitQty" value="1" min="1">
+                    <button class="qty-btn" onclick="increaseQuantity('lubingKitQty')">+</button>
+                </div>
+                <div class="purchase-buttons">
+                    <button id="lubingKitAddToCart" class="add-to-cart">Add To Cart</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Screwdriver Set Product Section -->
+        <div class="product-section" id="screwdriverSetProduct">
+            <div class="product-left">
+                <div class="product-banner">
+                    <img src="Images/Screwdriver Set.jpg" alt="Screwdriver Set" class="product-image">
+                </div>
+            </div>
+            <div class="product-right">
+                <h1 class="product-title">Screwdriver Set</h1>
+                <div class="price-section">
+                    <span class="price">₱110.00</span>
+                </div>
+                <p class="product-description">This precision screwdriver set is designed for assembling and disassembling mechanical keyboards.</p>
+                <div class="quantity">
+                    <button class="qty-btn" onclick="decreaseQuantity('screwdriverSetQty')">-</button>
+                    <input type="number" id="screwdriverSetQty" value="1" min="1">
+                    <button class="qty-btn" onclick="increaseQuantity('screwdriverSetQty')">+</button>
+                </div>
+                <div class="purchase-buttons">
+                    <button id="screwdriverSetAddToCart" class="add-to-cart">Add To Cart</button>
+                </div>
+            </div>
+        </div>
+
+       <!-- MillMax 7305 Product Section -->
+<div class="product-section" id="millmax7305Product">
+    <div class="product-left">
+        <div class="product-banner">
+            <img src="Images/MillMax 7305.jpg" alt="MillMax 7305" class="product-image">
+        </div>
+    </div>
+    <div class="product-right">
+        <h1 class="product-title">MillMax 7305 (10pcs)</h1>
+        <div class="price-section">
+            <span class="price">₱140.00</span>
+        </div>
+        <p class="product-description">The MillMax 7305 switch pin is ideal for creating custom keyboard switches. It's perfect for enthusiasts looking to achieve a premium feel and performance in their keyboards.</p>
+        <div class="quantity">
+            <button class="qty-btn" onclick="decreaseQuantity('millmax7305Qty')">-</button>
+            <input type="number" id="millmax7305Qty" value="1" min="1">
+            <button class="qty-btn" onclick="increaseQuantity('millmax7305Qty')">+</button>
+        </div>
+        <div class="purchase-buttons">
+            <button id="millmax7305AddToCart" class="add-to-cart">Add To Cart</button>
+        </div>
+    </div>
+</div
     </div>
 
-    <script src="script.js"></script>
+    <script src="ModdingEssentials.js"></script>
 </body>
 </html>

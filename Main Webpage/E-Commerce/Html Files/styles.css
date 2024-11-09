@@ -191,6 +191,45 @@ input[type="number"] {
     transform: translateY(-2px);
 }
 
+.popup-message {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%); /* Center the notification */
+    background-color: rgba(0, 0, 0, 0.8); /* semi-transparent background */
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    z-index: 9999; /* Ensure it appears on top of all content */
+    width: 80%; /* Set a width for the notification */
+    max-width: 500px; /* Max width for large screens */
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.popup-image {
+    max-height: 50px; /* Size of the image */
+    max-width: 50px;
+    object-fit: contain;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+
 /* Media Queries for Responsive Design */
 @media (max-width: 768px) {
     .product-section {

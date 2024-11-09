@@ -11,9 +11,6 @@ document.addEventListener('DOMContentLoaded', function () {
         const itemElement = document.createElement('div');
         itemElement.classList.add('checkout-item');
 
-        // Ensure the item has an image; use a placeholder if not
-        const imageUrl = item.image || 'Images/placeholder.png'; // Replace 'Images/placeholder.png' with the path to your placeholder image
-
         // Clean the price before displaying (remove ₱ and non-numeric characters)
         const cleanPrice = parseFloat(item.price.replace(/[^\d.-]/g, '')) || 0;
         const quantity = parseInt(item.quantity, 10) || 0;
@@ -22,11 +19,10 @@ document.addEventListener('DOMContentLoaded', function () {
         totalPrice += cleanPrice * quantity;
 
         itemElement.innerHTML = `
-            <img src="${imageUrl}" alt="${item.name}" class="product-image">
             <div class="checkout-item-info">
                 <p class="item-title">${item.name}</p>
-                <p class="item-price">Price: ₱${cleanPrice.toFixed(2)}</p>
-                <p class="item-quantity">Quantity: ${quantity}</p>
+                <p class="item-price">₱${cleanPrice.toFixed(2)}</p>
+                <p class="item-quantity">${quantity}</p>
             </div>
         `;
 
@@ -54,7 +50,7 @@ document.addEventListener('DOMContentLoaded', function () {
         
         // Redirect to another page after processing
         setTimeout(() => {
-            window.location.href = 'confirmation.html'; // Replace with your desired URL
+            window.location.href = "Order.html";// Replace with your desired URL
         }, 2000); // Delay to simulate processing
     });
 

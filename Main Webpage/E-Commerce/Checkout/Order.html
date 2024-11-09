@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proceed to Checkout</title>
+    <link rel="stylesheet" href="Order.css">
+</head>
+<body>
+    <section class="checkout">
+        <h2>Checkout</h2>
+
+        <!-- Display cart items -->
+        <div id="cartItemsContainer">
+            <!-- Cart items will be displayed here dynamically by JavaScript -->
+        </div>
+
+        <!-- Total Amount Section -->
+        <div class="total">
+            <p>Total Amount:</p>
+            <span id="totalAmount">₱0.00</span> <!-- The total amount will be calculated and updated by JavaScript -->
+        </div>
+
+        <!-- Payment Details Section -->
+        <div class="payment-details">
+            <h3>Payment Details</h3>
+            <div class="payment-item">
+                <p>Payment Method:</p>
+                <!-- Initially displaying Credit Card. The value will change when a user selects a different payment method -->
+                <span id="selectedPaymentMethod" onclick="toggleDropdown()">Credit Card</span>
+
+                <!-- Dropdown for selecting payment method -->
+                <div class="payment-method-dropdown" id="paymentMethodDropdown" style="display: none;">
+                    <p onclick="selectPaymentMethod('Credit Card')">Credit Card</p>
+                    <p onclick="selectPaymentMethod('GCash')">GCash</p>
+                    <p onclick="selectPaymentMethod('Cash on Delivery')">Cash on Delivery</p>
+                </div>
+            </div>
+            <div class="payment-item">
+                <p>Payment Status:</p>
+                <span>Pending</span>
+            </div>
+            <div class="payment-item">
+                <p>Payment Date:</p>
+                <span id="paymentDate">2024-11-09</span> <!-- The payment date will be dynamically set by JavaScript -->
+            </div>
+        </div>
+
+        <!-- Button Container for Cancel and Confirm buttons -->
+        <div class="button-container">
+            <!-- Checkout Button -->
+            <button id="checkoutButton">Confirm</button>
+
+            <!-- Cancel Order Button (optional) -->
+            <button id="cancelOrderButton">Cancel Order</button>
+        </div>
+    </section>
+
+    <script src="Order.js"></script>
+</body>
+</html>

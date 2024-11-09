@@ -647,6 +647,7 @@
     
 
     @media (width > 540px) {
+      
       .deals__container {
         grid-template-columns: repeat(2, 1fr);
       }

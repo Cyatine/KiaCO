@@ -7,43 +7,30 @@ function updateCartCount() {
     }
 }
 
-// Function to show visual confirmation when an item is added to the cart
-function showVisualConfirmation(productName, productImage) {
-    const confirmation = document.createElement('div');
-    confirmation.classList.add('confirmation-popup');
-    confirmation.innerHTML = `
-        <img src="${productImage}" alt="${productName}" class="confirmation-image">
-        <p>${productName} added to cart!</p>
-    `;
-    document.body.appendChild(confirmation);
-
-    setTimeout(() => {
-        confirmation.remove();
-    }, 3000); // Remove the popup after 3 seconds
-}
-
-// Function to add item to cart
+// Function to add item to cart or increase quantity if item already exists
 function addToCart(productName, productPrice, quantity, productImage) {
+    // Ensure the quantity does not exceed the max limit
+    const maxQuantity = 20;
+    quantity = Math.min(parseInt(quantity), maxQuantity);
+
     // Retrieve existing cart items from localStorage
     let cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
 
-    // Ensure quantity is always an integer
-    quantity = parseInt(quantity) || 1;
+    // Check if the product already exists in the cart
+    const existingItemIndex = cartItems.findIndex(item => item.name === productName && item.price === productPrice && item.image === productImage);
 
-    // Check if the product is already in the cart
-    const existingItemIndex = cartItems.findIndex(item => item.name === productName);
-
-    if (existingItemIndex > -1) {
-        // If item exists, update its quantity
-        cartItems[existingItemIndex].quantity += quantity;
+    if (existingItemIndex !== -1) {
+        // If item exists, increase the quantity but do not exceed max limit
+        cartItems[existingItemIndex].quantity = Math.min(cartItems[existingItemIndex].quantity + quantity, maxQuantity);
     } else {
-        // If item doesn't exist, create a new item and add to cart
+        // If item doesn't exist, create a new item object
         const newItem = {
             name: productName,
             price: productPrice,
             quantity: quantity,
-            image: productImage // Add the image URL to the new item
+            image: productImage // Store the image URL as well
         };
+        // Add the new item to the cart array
         cartItems.push(newItem);
     }
 
@@ -56,12 +43,38 @@ function addToCart(productName, productPrice, quantity, productImage) {
     // Immediately update the cart count display
     updateCartCount();
 
-    // Show visual confirmation
-    showVisualConfirmation(productName, productImage);
-
     // Optional: Show a message to the user
     alert(`${productName} has been added to your cart!`);
     console.log('Cart updated:', cartItems);  // Debugging line
+
+    // Send the updated cart data to the backend
+    const username = localStorage.getItem('username'); // Assume username is stored in localStorage
+    if (username) {
+        cartItems.forEach(item => {
+            fetch('/add-to-cart', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    username: username,
+                    productName: item.name,
+                    quantity: item.quantity,
+                    price: parseFloat(item.price.replace(/[^0-9.-]+/g, '')), // Clean price for backend (remove ₱ sign)
+                    image: item.image // Send the image URL to the backend
+                }),
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.message) {
+                    console.log(data.message);
+                }
+            })
+            .catch((error) => {
+                console.error('Error adding to cart:', error);
+            });
+        });
+    }
 }
 
 // Event listener for Add to Cart buttons
@@ -79,19 +92,20 @@ document.addEventListener("DOMContentLoaded", () => {
     // Attach event listeners for each Add to Cart button
     const products = [
         { id: 'akkoMU01AddToCart', name: "Akko MU01 JOL", price: "₱7299.00", quantityId: 'akkoMU01Qty', image: 'Images/Akko Joy of Life.jpg' },
-        { id: 'weikavLucky65V2AddToCart', name: "Weikav Lucky65 V2", price: "₱3300.00", quantityId: 'weikavLucky65V2Qty', image: 'Images/Weikav Lucky65 V2.jpg' },
-        { id: 'aulaF75AddToCart', name: "Aula F75", price: "₱3000.00", quantityId: 'aulaF75Qty', image: 'Images/AULA F75.jpg' },
-        { id: 'aulaLEOBOGHi75AddToCart', name: "AULA LEOBOG Hi75", price: "₱2400.00", quantityId: 'aulaLEOBOGHi75Qty', image: 'Images/AULA LEOBOG Hi75.jpg' },
-        { id: 'womierSK65AddToCart', name: "WOMIER SK65", price: "₱6000.00", quantityId: 'womierSK65Qty', image: 'Images/Womier SK65.jpg' }
+        { id: 'weikavLucky65V2AddToCart', name: "Weikav Lucky65 V2", price: "₱3300.00", quantityId: 'weikavLucky65V2Qty', image: 'path/to/weikavLucky65V2.jpg' },
+        { id: 'aulaF75AddToCart', name: "Aula F75", price: "₱3000.00", quantityId: 'aulaF75Qty', image: 'path/to/aulaF75.jpg' },
+        { id: 'aulaLEOBOGHi75AddToCart', name: "AULA LEOBOG Hi75", price: "₱2400.00", quantityId: 'aulaLEOBOGHi75Qty', image: 'path/to/aulaLEOBOGHi75.jpg' },
+        { id: 'womierSK65AddToCart', name: "WOMIER SK65", price: "₱6000.00", quantityId: 'womierSK65Qty', image: 'path/to/womierSK65.jpg' }
     ];
 
     products.forEach(product => {
         const addToCartButton = document.getElementById(product.id);
+        console.log('addToCartButton:', addToCartButton); // Debugging line
         if (addToCartButton) {
             addToCartButton.addEventListener('click', function() {
                 const quantity = document.getElementById(product.quantityId).value;
                 console.log(`Adding ${product.name} with quantity ${quantity}`); // Debugging line
-                addToCart(product.name, product.price, quantity, product.image); // Pass image URL here
+                addToCart(product.name, product.price, quantity, product.image);
             });
         }
     });
@@ -100,7 +114,9 @@ document.addEventListener("DOMContentLoaded", () => {
 // Quantity adjustment functions
 function increaseQuantity(id) {
     const qty = document.getElementById(id);
-    qty.value = parseInt(qty.value) + 1;
+    if (parseInt(qty.value) < 20) { // Set max quantity to 20
+        qty.value = parseInt(qty.value) + 1;
+    }
 }
 
 function decreaseQuantity(id) {

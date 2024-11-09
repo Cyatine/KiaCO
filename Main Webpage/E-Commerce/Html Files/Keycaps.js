@@ -9,18 +9,18 @@ function updateCartCount() {
 
 // Function to add item to cart
 function addToCart(productName, productPrice, quantity) {
+    // Ensure quantity is an integer and limit it to a max of 20
+    quantity = Math.min(parseInt(quantity) || 1, 20);
+
     // Retrieve existing cart items from localStorage
     let cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
-    
-    // Ensure quantity is always an integer
-    quantity = parseInt(quantity) || 1;
 
     // Check if the product is already in the cart
     const existingItemIndex = cartItems.findIndex(item => item.name === productName);
 
     if (existingItemIndex > -1) {
-        // If item exists, update its quantity
-        cartItems[existingItemIndex].quantity += quantity;
+        // If item exists, update its quantity but do not exceed 20
+        cartItems[existingItemIndex].quantity = Math.min(cartItems[existingItemIndex].quantity + quantity, 20);
     } else {
         // If item doesn't exist, create a new item and add to cart
         const newItem = {
@@ -42,6 +42,35 @@ function addToCart(productName, productPrice, quantity) {
 
     // Optional: Show a message to the user
     alert(`${productName} has been added to your cart!`);
+
+    // Send the updated cart data to the backend
+    const username = localStorage.getItem('username'); // Assume username is stored in localStorage
+    if (username) {
+        // Loop through each item in the cart and send its data
+        cartItems.forEach(item => {
+            fetch('/add-to-cart', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    username: username,
+                    productName: item.name,
+                    quantity: item.quantity,
+                    price: parseFloat(item.price.replace(/[^0-9.-]+/g, '')) // Clean price for backend (remove ₱ sign)
+                }),
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.message) {
+                    console.log(data.message);
+                }
+            })
+            .catch((error) => {
+                console.error('Error adding to cart:', error);
+            });
+        });
+    }
 }
 
 // Event listener for Add to Cart buttons
@@ -64,7 +93,6 @@ document.addEventListener("DOMContentLoaded", () => {
         { id: 'macaw', name: "Akko Macaw Keycaps", price: "₱2600.00", quantityId: 'macawQty' },
         { id: 'honor', name: "GMK Honor Keycaps", price: "₱2900.00", quantityId: 'honorQty' }
     ];
-    
 
     products.forEach(product => {
         const addToCartButton = document.getElementById(`${product.id}AddToCart`);
@@ -80,7 +108,9 @@ document.addEventListener("DOMContentLoaded", () => {
 // Quantity adjustment functions
 function increaseQuantity(id) {
     const qty = document.getElementById(id);
-    qty.value = parseInt(qty.value) + 1;
+    if (parseInt(qty.value) < 20) { // Set max quantity to 20
+        qty.value = parseInt(qty.value) + 1;
+    }
 }
 
 function decreaseQuantity(id) {

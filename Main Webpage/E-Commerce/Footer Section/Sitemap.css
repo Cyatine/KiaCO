@@ -1,4 +1,3 @@
-/* General Reset */
 * {
     margin: 0;
     padding: 0;
@@ -6,32 +5,61 @@
 }
 
 body {
-    font-family: 'Arial', sans-serif; /* Adjust font-family to match the main website */
-    color: #333; /* Main text color */
-    background-color: #f8f9fa; /* Light background color for better contrast */
+    font-family: 'Bebas Neue', sans-serif; /* Changed to Bebas Neue */
+    color: #333; 
+    background: linear-gradient(135deg, #1a1a1a 50%, #262626 50%);
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    height: 100vh; 
+    padding: 20px; 
+    overflow: auto; 
 }
 
+/* Adjust the container to be more flexible */
 .container {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
+    max-width: 900px; /* Adjusted for larger layout if needed */
+    width: 100%; 
+    margin: 0 auto; 
+    padding: 30px; /* Increased padding */
+}
+
+/* Utility Classes */
+.text-center {
+    text-align: center;
+}
+
+.text-uppercase {
+    text-transform: uppercase;
+}
+
+.mt-20 {
+    margin-top: 20px;
+}
+
+.mb-20 {
+    margin-bottom: 20px;
+}
+
+.py-20 {
+    padding: 20px 0;
 }
 
 /* Header Section */
 .header {
     text-align: center;
     padding: 20px;
-    background-color: #242c94; /* Primary color from main website */
-    color: #fff; /* White text for contrast */
-    border-radius: 8px;
+    background-color: #242c94; 
+    color: #fff; 
+    border-radius: 15px; 
     margin-bottom: 20px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); /* Subtle shadow for depth */
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2); 
 }
 
 .subheader {
-    font-size: 2rem;
+    font-size: 2.5rem; 
     font-weight: bold;
-    letter-spacing: 1px; /* Spacing similar to the main website */
+    letter-spacing: 1.5px; 
 }
 
 /* Map and Location Info Section */
@@ -41,42 +69,59 @@ body {
     align-items: center;
     background-color: #ffffff;
     padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    gap: 20px; /* Consistent gap between elements */
+    border-radius: 15px; 
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    gap: 20px; 
 }
 
-.map-iframe {
-    width: 100%;
-    max-width: 600px;
-    height: 300px;
-    border: none;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15); /* Shadow for elevation */
+.map-image {
+    width: 100%; 
+    max-width: 600px; 
+    height: auto; /* Maintain aspect ratio */
+    border-radius: 15px; 
 }
 
+/* Updated Text Styles */
 .location-info {
     text-align: center;
-    font-size: 1rem;
+    font-size: 1.5rem; /* Base font size for location info */
     color: #333;
-    line-height: 1.6;
+    line-height: 1.8; /* Slightly increased line height */
 }
 
 .location-info h3 {
-    font-size: 1.4rem;
+    font-size: 1.8rem; /* Increased header font size */
     font-weight: bold;
     color: #242c94;
     margin-bottom: 10px;
-    text-transform: uppercase; /* Similar style as the main website header */
+    text-transform: uppercase; 
+    letter-spacing: 1px; 
 }
 
 .location-info p {
-    margin: 8px 0;
+    margin: 10px 0; /* Increased margin */
     line-height: 1.6;
 }
 
 .location-info strong {
     color: #333;
+}
+
+/* Button Styles */
+.button {
+    display: inline-block;
+    padding: 12px 20px;
+    background-color: #242c94; 
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s, transform 0.3s;
+    margin-top: 10px;
+}
+
+.button:hover {
+    background-color: #1a1b6e; 
+    transform: translateY(-2px); /* Lift effect */
 }
 
 /* Responsive Design */
@@ -87,13 +132,42 @@ body {
         justify-content: space-between;
     }
 
-    .map-iframe {
-        width: 55%;
+    .map-image {
+        width: 60%; /* Adjusted for a better layout on larger screens */
         margin-right: 20px;
     }
 
     .location-info {
-        width: 40%;
+        width: 35%;
         text-align: left;
     }
+}
+
+/* Footer Section */
+.footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #242c94; 
+    color: #fff;
+    border-radius: 8px;
+    margin-top: 20px;
+    box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.footer p {
+    font-size: 0.9rem;
+}
+
+/* Animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.fade-in {
+    animation: fadeIn 0.8s ease-in;
 }

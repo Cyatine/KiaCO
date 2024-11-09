@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // Existing form elements
     const formTitle = document.getElementById('form-title');
     const formDescription = document.getElementById('form-description');
     const submitBtn = document.getElementById('submit-btn'); // Original button
@@ -13,6 +14,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let isSignUpMode = false;
 
+    // Check the query parameter 'cartSaved' in the URL to show cart-related messages
+    const urlParams = new URLSearchParams(window.location.search);
+    const cartSaved = urlParams.get('cartSaved');
+
+    if (cartSaved === 'true') {
+        alert('Your cart has been saved successfully!');  // Show this message if the cart was saved
+    } else if (cartSaved === 'false') {
+        alert('Your cart was empty, no items to save.');  // Show this message if the cart was empty
+    }
+
+    // Function to update the form state for login/sign-up
     const updateForm = () => {
         loginForm.reset(); // Clear input fields on mode switch
 
@@ -42,6 +54,7 @@ document.addEventListener('DOMContentLoaded', () => {
             secondLoginBtn.classList.remove('hidden');
         }
 
+        // Toggle between sign-up and login mode
         const toggleLink = document.getElementById('toggle-form');
         if (toggleLink) {
             toggleLink.addEventListener('click', (e) => {
@@ -53,6 +66,21 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     updateForm(); // Initialize form state
+
+    const validateEmail = (email) => {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; // Basic email format validation
+        return emailRegex.test(email);
+    };
+
+    const validatePhoneNumber = (phone) => {
+        const phoneRegex = /^\d{11}$/; // Phone number should be exactly 11 digits
+        return phoneRegex.test(phone);
+    };
+
+    const validatePassword = (password) => {
+        const passwordRegex = /^(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{8,}$/; // Password must have at least one special character and be at least 8 chars long
+        return passwordRegex.test(password);
+    };
 
     const handleFormSubmission = async (event) => {
         event.preventDefault();
@@ -70,8 +98,26 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         if (isSignUpMode) {
-            if (!email || !address || !phone) {
-                errorMessage.textContent = 'Please fill in all fields (email, address, phone).';
+            if (!email || !validateEmail(email)) {
+                errorMessage.textContent = 'Please enter a valid email.';
+                errorMessage.classList.remove('hidden');
+                return;
+            }
+
+            if (!address) {
+                errorMessage.textContent = 'Please enter your address.';
+                errorMessage.classList.remove('hidden');
+                return;
+            }
+
+            if (!phone || !validatePhoneNumber(phone)) {
+                errorMessage.textContent = 'Please enter a valid phone number (11 digits).';
+                errorMessage.classList.remove('hidden');
+                return;
+            }
+
+            if (!validatePassword(password)) {
+                errorMessage.textContent = 'Password must be at least 8 characters long and contain at least one special character.';
                 errorMessage.classList.remove('hidden');
                 return;
             }

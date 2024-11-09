@@ -43,19 +43,19 @@ body {
     transform: scale(1.02);
 }
 
-.checkout-item img {
-    width: 80px;
-    height: 80px;
-    object-fit: cover;
-    border-radius: 8px;
-    margin-right: 20px;
-}
-
 .checkout-item-info {
     flex-grow: 1;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    width: 100%;
+}
+
+.item-title,
+.item-price,
+.item-quantity {
+    width: 33%; /* Ensuring the columns are evenly spaced */
+    text-align: center; /* Aligning text to the center */
 }
 
 .item-title {
@@ -69,6 +69,10 @@ body {
     font-weight: bold;
     font-size: 20px;
     padding-left: 20px;
+}
+
+.item-quantity {
+    font-size: 20px;
 }
 
 .total-quantity {
